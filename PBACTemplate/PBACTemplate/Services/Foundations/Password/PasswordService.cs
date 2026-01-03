@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Password;
 
-public partial class PasswordService(
+public sealed partial class PasswordService(
     IUserManagerBroker userManagerBroker,
     ILogger<PasswordService> logger) : IPasswordService
 {

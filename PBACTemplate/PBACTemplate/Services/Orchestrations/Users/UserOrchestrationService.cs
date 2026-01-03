@@ -22,7 +22,7 @@ using PBACTemplate.Services.Foundations.UserOptions;
 
 namespace PBACTemplate.Services.Orchestrations.Users;
 
-public partial class UserOrchestrationService(
+public sealed partial class UserOrchestrationService(
     IUserNameService userNameService,
     IUserCrudService userCrudService,
     ITwoFactorService twoFactorService,

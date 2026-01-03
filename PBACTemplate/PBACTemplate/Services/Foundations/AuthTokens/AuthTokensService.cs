@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.AuthTokens;
 
-public partial class AuthTokensService(
+public sealed partial class AuthTokensService(
     IUserManagerBroker userManagerBroker,
     ILogger<AuthTokensService> logger) : IAuthTokensService
 {

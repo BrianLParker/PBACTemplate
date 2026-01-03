@@ -7,7 +7,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Passkeys;
 
-public partial class PasskeysService(
+public sealed partial class PasskeysService(
     IUserManagerBroker userManagerBroker,
     ILogger<PasskeysService> logger) : IPasskeysService
 {

@@ -7,7 +7,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.UserOptions;
 
-public class UserOptionsService(IUserManagerBroker userManager) : IUserOptionsService
+public sealed class UserOptionsService(IUserManagerBroker userManager) : IUserOptionsService
 {
     public ILogger Logger
     {

@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Roles;
 
-public partial class RolesService(
+public sealed partial class RolesService(
     IUserManagerBroker userManagerBroker,
     ILogger<RolesService> logger) : IRolesService
 {

@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.RecoveryCodes;
 
-public partial class RecoveryCodesService(
+public sealed partial class RecoveryCodesService(
     IUserManagerBroker userManagerBroker,
     ILogger<RecoveryCodesService> logger) : IRecoveryCodesService
 {

@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Security;
 
-public partial class SecurityService(
+public sealed partial class SecurityService(
     IUserManagerBroker userManagerBroker,
     ILogger<SecurityService> logger) : ISecurityService
 {

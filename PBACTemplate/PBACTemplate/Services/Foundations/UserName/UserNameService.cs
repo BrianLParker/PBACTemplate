@@ -7,7 +7,7 @@ using System.Security.Claims;
 
 namespace PBACTemplate.Services.Foundations.UserName;
 
-public partial class UserNameService(
+public sealed partial class UserNameService(
     IUserManagerBroker userManagerBroker,
     ILogger<UserNameService> logger) : IUserNameService
 {

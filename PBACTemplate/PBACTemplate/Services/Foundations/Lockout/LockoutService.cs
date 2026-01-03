@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Lockout;
 
-public partial class LockoutService(
+public sealed partial class LockoutService(
     IUserManagerBroker userManagerBroker,
     ILogger<LockoutService> logger) : ILockoutService
 {

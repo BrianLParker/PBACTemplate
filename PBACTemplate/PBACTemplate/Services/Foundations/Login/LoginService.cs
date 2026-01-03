@@ -7,7 +7,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Login;
 
-public partial class LoginService(
+public sealed partial class LoginService(
     IUserManagerBroker userManagerBroker,
     ILogger<LoginService> logger) : ILoginService
 {

@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Email;
 
-public partial class EmailService(
+public sealed partial class EmailService(
     IUserManagerBroker userManagerBroker,
     ILogger<EmailService> logger) : IEmailService
 {

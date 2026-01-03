@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.TwoFactor;
 
-public partial class TwoFactorService(
+public sealed partial class TwoFactorService(
     IUserManagerBroker userManagerBroker,
     ILogger<TwoFactorService> logger) : ITwoFactorService
 {

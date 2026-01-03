@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Phone;
 
-public partial class PhoneService(
+public sealed partial class PhoneService(
     IUserManagerBroker userManagerBroker,
     ILogger<PhoneService> logger) : IPhoneService
 {

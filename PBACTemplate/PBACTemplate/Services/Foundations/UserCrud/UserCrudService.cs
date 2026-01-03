@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.UserCrud;
 
-public partial class UserCrudService(
+public sealed partial class UserCrudService(
     IUserManagerBroker userManagerBroker,
     ILogger<UserCrudService> logger) : IUserCrudService
 {

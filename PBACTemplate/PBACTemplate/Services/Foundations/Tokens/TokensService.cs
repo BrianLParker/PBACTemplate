@@ -6,7 +6,7 @@ using PBACTemplate.Data;
 
 namespace PBACTemplate.Services.Foundations.Tokens;
 
-public partial class TokensService(
+public sealed partial class TokensService(
     IUserManagerBroker userManagerBroker,
     ILogger<TokensService> logger) : ITokensService
 {
