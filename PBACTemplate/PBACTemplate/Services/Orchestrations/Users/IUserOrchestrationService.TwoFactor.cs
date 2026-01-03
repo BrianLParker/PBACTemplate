@@ -1,0 +1,17 @@
+// Copyright (c) 2026, Brian Parker. All Rights Reserved.
+// IUserOrchestrationService.TwoFactor.cs See LICENSE.txt in the root folder of the solution.
+
+using Microsoft.AspNetCore.Identity;
+using PBACTemplate.Data;
+
+namespace PBACTemplate.Services.Orchestrations.Users;
+
+public partial interface IUserOrchestrationService
+{
+    // Two-factor authentication operations
+    Task<bool> GetTwoFactorEnabledAsync(ApplicationUser user);
+    Task<IdentityResult> SetTwoFactorEnabledAsync(ApplicationUser user, bool enabled);
+    Task<IList<string>> GetValidTwoFactorProvidersAsync(ApplicationUser user);
+    Task<string> GenerateTwoFactorTokenAsync(ApplicationUser user, string tokenProvider);
+    Task<bool> VerifyTwoFactorTokenAsync(ApplicationUser user, string tokenProvider, string token);
+}

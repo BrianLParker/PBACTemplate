@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PBACTemplate/PBACTemplate.Client/PBACTemplate.Client.csproj" />
+  <Project Path="PBACTemplate/PBACTemplate/PBACTemplate.csproj" />
+</Solution>
