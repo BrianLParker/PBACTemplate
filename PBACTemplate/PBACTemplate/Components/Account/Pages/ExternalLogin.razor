@@ -8,7 +8,7 @@
 @using Microsoft.AspNetCore.WebUtilities
 @using PBACTemplate.Data
 
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject IUserOrchestrationService UserManager
 @inject IUserStore<ApplicationUser> UserStore
 @inject IEmailSender<ApplicationUser> EmailSender

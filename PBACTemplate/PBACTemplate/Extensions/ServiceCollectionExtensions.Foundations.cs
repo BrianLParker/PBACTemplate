@@ -12,6 +12,7 @@ using PBACTemplate.Services.Foundations.Phone;
 using PBACTemplate.Services.Foundations.RecoveryCodes;
 using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.Security;
+using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Foundations.Tokens;
 using PBACTemplate.Services.Foundations.TwoFactor;
 using PBACTemplate.Services.Foundations.UserCrud;
@@ -42,6 +43,7 @@ public static partial class ServiceCollectionExtensions
             services.AddScoped<IUserCrudService, UserCrudService>();
             services.AddScoped<IUserNameService, UserNameService>();
             services.AddScoped<IUserOptionsService, UserOptionsService>();
+            services.AddScoped<ISignInService, SignInService>();
         }
     }
 }

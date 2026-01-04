@@ -4,7 +4,7 @@
 @using Microsoft.AspNetCore.Identity
 @using PBACTemplate.Data
 
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject IUserOrchestrationService UserManager
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<LoginWith2fa> Logger

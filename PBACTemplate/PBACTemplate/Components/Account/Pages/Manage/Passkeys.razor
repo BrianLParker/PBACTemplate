@@ -4,9 +4,10 @@
 @using Microsoft.AspNetCore.Identity
 @using System.ComponentModel.DataAnnotations
 @using System.Buffers.Text
+@using PBACTemplate.Models.Account
 
 @inject IUserOrchestrationService UserManager
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Manage your passkeys</PageTitle>

@@ -4,7 +4,7 @@
 @using PBACTemplate.Data
 
 @inject IUserOrchestrationService UserManager
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<ResetAuthenticator> Logger
 

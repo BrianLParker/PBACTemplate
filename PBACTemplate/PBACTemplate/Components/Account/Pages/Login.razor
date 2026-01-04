@@ -4,9 +4,10 @@
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
 @using PBACTemplate.Data
+@using PBACTemplate.Models.Account
 
 @inject IUserOrchestrationService UserManager
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject ILogger<Login> Logger
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager

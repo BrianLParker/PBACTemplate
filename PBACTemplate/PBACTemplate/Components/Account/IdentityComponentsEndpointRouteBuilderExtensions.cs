@@ -11,6 +11,7 @@ using Microsoft.Extensions.Primitives;
 using PBACTemplate.Components.Account.Pages;
 using PBACTemplate.Components.Account.Pages.Manage;
 using PBACTemplate.Data;
+using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Orchestrations.Users;
 using System.Security.Claims;
 using System.Text.Json;
@@ -28,7 +29,7 @@ namespace Microsoft.AspNetCore.Routing
 
             accountGroup.MapPost("/PerformExternalLogin", (
                 HttpContext context,
-                [FromServices] SignInManager<ApplicationUser> signInManager,
+                [FromServices] ISignInService signInManager,
                 [FromForm] string provider,
                 [FromForm] string returnUrl) =>
             {
@@ -47,7 +48,7 @@ namespace Microsoft.AspNetCore.Routing
 
             accountGroup.MapPost("/Logout", async (
                 ClaimsPrincipal user,
-                [FromServices] SignInManager<ApplicationUser> signInManager,
+                [FromServices] ISignInService signInManager,
                 [FromForm] string returnUrl) =>
             {
                 await signInManager.SignOutAsync();
@@ -57,7 +58,7 @@ namespace Microsoft.AspNetCore.Routing
             accountGroup.MapPost("/PasskeyCreationOptions", async (
                 HttpContext context,
                 [FromServices] IUserOrchestrationService userManager,
-                [FromServices] SignInManager<ApplicationUser> signInManager,
+                [FromServices] ISignInService signInManager,
                 [FromServices] IAntiforgery antiforgery) =>
             {
                 await antiforgery.ValidateRequestAsync(context);
@@ -82,7 +83,7 @@ namespace Microsoft.AspNetCore.Routing
             accountGroup.MapPost("/PasskeyRequestOptions", async (
                 HttpContext context,
                 [FromServices] IUserOrchestrationService userManager,
-                [FromServices] SignInManager<ApplicationUser> signInManager,
+                [FromServices] ISignInService signInManager,
                 [FromServices] IAntiforgery antiforgery,
                 [FromQuery] string? username) =>
             {
@@ -97,7 +98,8 @@ namespace Microsoft.AspNetCore.Routing
 
             manageGroup.MapPost("/LinkExternalLogin", async (
                 HttpContext context,
-                [FromServices] SignInManager<ApplicationUser> signInManager,
+                [FromServices] IUserOrchestrationService userManager,
+                [FromServices] ISignInService signInManager,
                 [FromForm] string provider) =>
             {
                 // Clear the existing external cookie to ensure a clean login process
@@ -108,7 +110,7 @@ namespace Microsoft.AspNetCore.Routing
                     "/Account/Manage/ExternalLogins",
                     QueryString.Create("Action", ExternalLogins.LinkLoginCallbackAction));
 
-                var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, signInManager.UserManager.GetUserId(context.User));
+                var properties = signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl, userManager.GetUserId(context.User));
                 return TypedResults.Challenge(properties, [provider]);
             });
 

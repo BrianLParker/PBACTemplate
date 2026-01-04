@@ -4,9 +4,10 @@
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
 @using PBACTemplate.Data
+@using PBACTemplate.Services.Foundations.SignIn
 
 @inject IUserOrchestrationService UserManager
-@inject SignInManager<ApplicationUser> SignInManager
+@inject ISignInService SignInManager
 @inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Confirm email change</PageTitle>
