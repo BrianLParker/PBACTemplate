@@ -1,6 +1,7 @@
 ﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // ServiceCollectionExtensions.Foundations.cs See LICENSE.txt in the root folder of the solution.
 
+using PBACTemplate.Client.Services.Foundations.Navigation;
 using PBACTemplate.Services.Foundations.AuthTokens;
 using PBACTemplate.Services.Foundations.Claims;
 using PBACTemplate.Services.Foundations.Email;
@@ -44,6 +45,7 @@ public static partial class ServiceCollectionExtensions
             services.AddScoped<IUserNameService, UserNameService>();
             services.AddScoped<IUserOptionsService, UserOptionsService>();
             services.AddScoped<ISignInService, SignInService>();
+            services.AddScoped<INavigationService, NavigationService>();
         }
     }
 }

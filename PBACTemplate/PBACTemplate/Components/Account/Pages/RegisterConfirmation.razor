@@ -3,11 +3,12 @@
 @using System.Text
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
+@using PBACTemplate.Client.Services.Foundations.Navigation
 @using PBACTemplate.Data
 
 @inject IUserOrchestrationService UserManager
 @inject IEmailSender<ApplicationUser> EmailSender
-@inject NavigationManager NavigationManager
+@inject INavigationService NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Register confirmation</PageTitle>

@@ -3,13 +3,14 @@
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Authentication
 @using Microsoft.AspNetCore.Identity
+@using PBACTemplate.Client.Services.Foundations.Navigation
 @using PBACTemplate.Data
 @using PBACTemplate.Models.Account
 
 @inject IUserOrchestrationService UserManager
 @inject ISignInService SignInManager
 @inject ILogger<Login> Logger
-@inject NavigationManager NavigationManager
+@inject INavigationService NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
 <PageTitle>Log in</PageTitle>

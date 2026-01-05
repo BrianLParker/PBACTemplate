@@ -3,6 +3,7 @@
 
 using PBACTemplate.Brokers.SignIn;
 using PBACTemplate.Brokers.User;
+using PBACTemplate.Client.Brokers.Navigation;
 
 namespace PBACTemplate.Extensions;
 
@@ -14,6 +15,7 @@ public static partial class ServiceCollectionExtensions
         {
             services.AddScoped<IUserManagerBroker, UserManagerBroker>();
             services.AddScoped<ISignInManagerBroker, SignInManagerBroker>();
+            services.AddScoped<INavigationBroker, NavigationBroker>();
         }
     }
 }

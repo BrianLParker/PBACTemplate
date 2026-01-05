@@ -6,13 +6,14 @@
 @using System.Text.Encodings.Web
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
+@using PBACTemplate.Client.Services.Foundations.Navigation
 @using PBACTemplate.Data
 
 @inject ISignInService SignInManager
 @inject IUserOrchestrationService UserManager
 @inject IUserStore<ApplicationUser> UserStore
 @inject IEmailSender<ApplicationUser> EmailSender
-@inject NavigationManager NavigationManager
+@inject INavigationService NavigationManager
 @inject IdentityRedirectManager RedirectManager
 @inject ILogger<ExternalLogin> Logger
 
