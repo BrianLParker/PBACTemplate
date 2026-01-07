@@ -1,4 +1,4 @@
 # PBACTemplate
-[![.NET](https://github.com/OWNER/REPO/actions/workflows/dotnet.yml/badge.svg)](https://github.com/OWNER/REPO/actions/workflows/dotnet.yml)
+[![.NET](https://github.com/BrianLParker/PBACTemplate/actions/workflows/dotnet.yml/badge.svg)](https://github.com/BrianLParker/PBACTemplate/actions/workflows/dotnet.yml)
 
 
