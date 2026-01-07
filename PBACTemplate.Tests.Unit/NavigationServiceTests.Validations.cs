@@ -33,7 +33,7 @@ public partial class NavigationServiceTests
             broker.NavigateTo(It.IsAny<string>(), It.IsAny<bool>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -61,7 +61,7 @@ public partial class NavigationServiceTests
             broker.NavigateTo(It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -88,7 +88,7 @@ public partial class NavigationServiceTests
             broker.NavigateTo(It.IsAny<string>(), It.IsAny<NavigationOptions>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -114,7 +114,7 @@ public partial class NavigationServiceTests
             broker.ToBaseRelativePath(It.IsAny<string>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Theory]
@@ -143,7 +143,7 @@ public partial class NavigationServiceTests
             broker.GetUriWithQueryParameter(It.IsAny<string>(), It.IsAny<string>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Theory]
@@ -172,7 +172,7 @@ public partial class NavigationServiceTests
             broker.GetUriWithQueryParameter(It.IsAny<string>(), It.IsAny<int>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -198,7 +198,7 @@ public partial class NavigationServiceTests
             broker.GetUriWithQueryParameters(It.IsAny<IReadOnlyDictionary<string, object?>>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -225,7 +225,7 @@ public partial class NavigationServiceTests
             broker.GetUriWithQueryParameters(It.IsAny<string>(), It.IsAny<IReadOnlyDictionary<string, object?>>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
@@ -252,6 +252,6 @@ public partial class NavigationServiceTests
             broker.GetUriWithQueryParameters(It.IsAny<string>(), It.IsAny<IReadOnlyDictionary<string, object?>>()),
             Times.Never);
 
-        this.navigationBrokerMock.VerifyNoOtherCalls();
+        VerifyNoOtherBrokerCalls();
     }
 }
