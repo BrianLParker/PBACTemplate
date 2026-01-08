@@ -2,7 +2,6 @@
 // PasskeysServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using Moq;
 using PBACTemplate.Data;
 using PBACTemplate.Services.Foundations.Passkeys.Exceptions;
 

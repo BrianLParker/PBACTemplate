@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Moq;
 using PBACTemplate.Brokers.User;
 using PBACTemplate.Data;
 using PBACTemplate.Services.Foundations.Passkeys;

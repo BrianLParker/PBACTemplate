@@ -2,7 +2,6 @@
 // NavigationServiceTests.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.Extensions.Logging;
-using Moq;
 using PBACTemplate.Client.Brokers.Navigation;
 using PBACTemplate.Client.Services.Foundations.Navigation;
 

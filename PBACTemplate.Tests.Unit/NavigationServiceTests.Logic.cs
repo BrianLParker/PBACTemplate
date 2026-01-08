@@ -2,7 +2,6 @@
 // NavigationServiceTests.Logic.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Components;
-using Moq;
 
 namespace PBACTemplate.Tests.Unit;
 

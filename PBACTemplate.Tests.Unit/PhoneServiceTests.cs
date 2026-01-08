@@ -1,29 +1,29 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// PasswordServiceTests.cs See LICENSE.txt in the root folder of the solution.
+// PhoneServiceTests.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.Extensions.Logging;
 using PBACTemplate.Brokers.User;
 using PBACTemplate.Data;
-using PBACTemplate.Services.Foundations.Password;
+using PBACTemplate.Services.Foundations.Phone;
 
 namespace PBACTemplate.Tests.Unit;
 
-public partial class PasswordServiceTests
+public partial class PhoneServiceTests
 {
     private readonly Mock<IUserManagerBroker> userManagerBrokerMock;
-    private readonly Mock<ILogger<PasswordService>> loggerMock;
-    private readonly IPasswordService passwordService;
+    private readonly Mock<ILogger<PhoneService>> loggerMock;
+    private readonly IPhoneService phoneService;
 
-    public PasswordServiceTests()
+    public PhoneServiceTests()
     {
         this.userManagerBrokerMock = new Mock<IUserManagerBroker>();
-        this.loggerMock = new Mock<ILogger<PasswordService>>();
+        this.loggerMock = new Mock<ILogger<PhoneService>>();
 
         this.loggerMock.Setup(logger =>
             logger.IsEnabled(It.IsAny<LogLevel>()))
                 .Returns(true);
 
-        this.passwordService = new PasswordService(
+        this.phoneService = new PhoneService(
             this.userManagerBrokerMock.Object,
             this.loggerMock.Object);
     }

@@ -2,7 +2,6 @@
 // NavigationServiceTests.Validations.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Components;
-using Moq;
 using PBACTemplate.Client.Services.Foundations.Navigation.Exceptions;
 
 namespace PBACTemplate.Tests.Unit;

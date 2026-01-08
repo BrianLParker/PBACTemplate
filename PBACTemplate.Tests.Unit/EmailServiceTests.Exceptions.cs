@@ -1,7 +1,6 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // EmailServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using Moq;
 using PBACTemplate.Data;
 using PBACTemplate.Services.Foundations.Email.Exceptions;
 

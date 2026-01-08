@@ -2,7 +2,6 @@
 // EmailServiceTests.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.Extensions.Logging;
-using Moq;
 using PBACTemplate.Brokers.User;
 using PBACTemplate.Data;
 using PBACTemplate.Services.Foundations.Email;
