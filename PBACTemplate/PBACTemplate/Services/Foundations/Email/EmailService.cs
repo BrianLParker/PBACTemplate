@@ -41,6 +41,7 @@ public sealed partial class EmailService(
     public string? NormalizeEmail(string? email) =>
         TryCatch(() =>
         {
+            ValidateEmail(email!);
             LogNormalizingEmail();
 
             return this.userManagerBroker.NormalizeEmail(email);
