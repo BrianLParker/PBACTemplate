@@ -1,11 +1,11 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// RolesService.Exceptions.cs See LICENSE.txt in the root folder of the solution.
+// UserRolesService.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Services.Foundations.Roles.Exceptions;
+using PBACTemplate.Services.Foundations.UserRoles.Exceptions;
 
-namespace PBACTemplate.Services.Foundations.Roles;
+namespace PBACTemplate.Services.Foundations.UserRoles;
 
-public partial class RolesService
+public partial class UserRolesService
 {
     private ValueTask<T> TryCatch<T>(Func<ValueTask<T>> returningValueTaskFunction) =>
         ExecuteWithExceptionHandlingAsync(returningValueTaskFunction);
@@ -17,29 +17,29 @@ public partial class RolesService
         {
             return await returningValueTaskFunction();
         }
-        catch (NullRolesException)
+        catch (NullUserRolesException)
         {
             throw;
         }
-        catch (InvalidRolesException)
+        catch (InvalidUserRolesException)
         {
             throw;
         }
-        catch (FailedRolesOperationException)
+        catch (FailedUserRolesOperationException)
         {
             throw;
         }
         catch (Exception exception)
         {
             var failedServiceException =
-                new FailedRolesServiceException(
-                    "Failed roles service error occurred, contact support.",
+                new FailedUserRolesServiceException(
+                    "Failed user roles service error occurred, contact support.",
                     exception);
 
             LogFailedRolesServiceException(failedServiceException);
 
-            throw new RolesServiceException(
-                "Roles service error occurred, contact support.",
+            throw new UserRolesServiceException(
+                "User roles service error occurred, contact support.",
                 failedServiceException);
         }
     }

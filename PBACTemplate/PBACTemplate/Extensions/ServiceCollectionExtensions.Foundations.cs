@@ -11,7 +11,6 @@ using PBACTemplate.Services.Foundations.Passkeys;
 using PBACTemplate.Services.Foundations.Password;
 using PBACTemplate.Services.Foundations.Phone;
 using PBACTemplate.Services.Foundations.RecoveryCodes;
-using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.Security;
 using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Foundations.Tokens;
@@ -19,6 +18,7 @@ using PBACTemplate.Services.Foundations.TwoFactor;
 using PBACTemplate.Services.Foundations.UserCrud;
 using PBACTemplate.Services.Foundations.UserName;
 using PBACTemplate.Services.Foundations.UserOptions;
+using PBACTemplate.Services.Foundations.UserRoles;
 
 namespace PBACTemplate.Extensions;
 
@@ -37,7 +37,7 @@ public static partial class ServiceCollectionExtensions
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<IPhoneService, PhoneService>();
             services.AddScoped<IRecoveryCodesService, RecoveryCodesService>();
-            services.AddScoped<IRolesService, RolesService>();
+            services.AddScoped<IUserRolesService, UserRolesService>();
             services.AddScoped<ISecurityService, SecurityService>();
             services.AddScoped<ITokensService, TokensService>();
             services.AddScoped<ITwoFactorService, TwoFactorService>();

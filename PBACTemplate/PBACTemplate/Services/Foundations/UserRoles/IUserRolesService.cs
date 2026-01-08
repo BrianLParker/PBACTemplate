@@ -1,11 +1,11 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// IRolesService.cs See LICENSE.txt in the root folder of the solution.
+// IUserRolesService.cs See LICENSE.txt in the root folder of the solution.
 
 using PBACTemplate.Data;
 
-namespace PBACTemplate.Services.Foundations.Roles;
+namespace PBACTemplate.Services.Foundations.UserRoles;
 
-public interface IRolesService
+public interface IUserRolesService
 {
     ValueTask<ApplicationUser> AddToRoleAsync(ApplicationUser user, string role);
     ValueTask<ApplicationUser> AddToRolesAsync(ApplicationUser user, IEnumerable<string> roles);

@@ -12,13 +12,13 @@ using PBACTemplate.Services.Foundations.Passkeys;
 using PBACTemplate.Services.Foundations.Password;
 using PBACTemplate.Services.Foundations.Phone;
 using PBACTemplate.Services.Foundations.RecoveryCodes;
-using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.Security;
 using PBACTemplate.Services.Foundations.Tokens;
 using PBACTemplate.Services.Foundations.TwoFactor;
 using PBACTemplate.Services.Foundations.UserCrud;
 using PBACTemplate.Services.Foundations.UserName;
 using PBACTemplate.Services.Foundations.UserOptions;
+using PBACTemplate.Services.Foundations.UserRoles;
 
 namespace PBACTemplate.Services.Orchestrations.Users;
 
@@ -28,7 +28,7 @@ public sealed partial class UserOrchestrationService(
     ITwoFactorService twoFactorService,
     ITokensService tokensService,
     ISecurityService securityService,
-    IRolesService rolesService,
+    IUserRolesService rolesService,
     IRecoveryCodesService recoveryCodesService,
     IPhoneService phoneService,
     IPasswordService passwordService,
@@ -52,7 +52,7 @@ public sealed partial class UserOrchestrationService(
     private readonly IPasswordService passwordService = passwordService;
     private readonly IPhoneService phoneService = phoneService;
     private readonly IRecoveryCodesService recoveryCodesService = recoveryCodesService;
-    private readonly IRolesService rolesService = rolesService;
+    private readonly IUserRolesService rolesService = rolesService;
     private readonly ISecurityService securityService = securityService;
     private readonly ITokensService tokensService = tokensService;
     private readonly ITwoFactorService twoFactorService = twoFactorService;

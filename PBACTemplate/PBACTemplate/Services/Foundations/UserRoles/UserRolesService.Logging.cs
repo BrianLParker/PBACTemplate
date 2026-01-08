@@ -1,9 +1,9 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// RolesService.Logging.cs See LICENSE.txt in the root folder of the solution.
+// UserRolesService.Logging.cs See LICENSE.txt in the root folder of the solution.
 
-namespace PBACTemplate.Services.Foundations.Roles;
+namespace PBACTemplate.Services.Foundations.UserRoles;
 
-public partial class RolesService
+public partial class UserRolesService
 {
     [LoggerMessage(
         Level = LogLevel.Information,

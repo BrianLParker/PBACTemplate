@@ -1,19 +1,19 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// RolesService.Validations.cs See LICENSE.txt in the root folder of the solution.
+// UserRolesService.Validations.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
 using PBACTemplate.Data;
-using PBACTemplate.Services.Foundations.Roles.Exceptions;
+using PBACTemplate.Services.Foundations.UserRoles.Exceptions;
 
-namespace PBACTemplate.Services.Foundations.Roles;
+namespace PBACTemplate.Services.Foundations.UserRoles;
 
-public partial class RolesService
+public partial class UserRolesService
 {
     private static void ValidateUser(ApplicationUser user)
     {
         if (user is null)
         {
-            throw new NullRolesException("User cannot be null.");
+            throw new NullUserRolesException("User cannot be null.");
         }
     }
 
@@ -21,7 +21,7 @@ public partial class RolesService
     {
         if (string.IsNullOrWhiteSpace(role))
         {
-            throw new InvalidRolesException("Role cannot be null or whitespace.");
+            throw new InvalidUserRolesException("Role name cannot be null or whitespace.");
         }
     }
 
@@ -29,12 +29,12 @@ public partial class RolesService
     {
         if (roles is null)
         {
-            throw new NullRolesException("Roles cannot be null.");
+            throw new NullUserRolesException("Roles collection cannot be null.");
         }
 
         if (!roles.Any())
         {
-            throw new InvalidRolesException("Roles cannot be empty.");
+            throw new InvalidUserRolesException("Roles collection cannot be empty.");
         }
     }
 
@@ -44,8 +44,8 @@ public partial class RolesService
         {
             var errors = string.Join(", ", result.Errors.Select(e => e.Description));
 
-            throw new FailedRolesOperationException(
-                $"Identity operation failed: {errors}");
+            throw new FailedUserRolesOperationException(
+                $"User roles identity operation failed: {errors}");
         }
     }
 }

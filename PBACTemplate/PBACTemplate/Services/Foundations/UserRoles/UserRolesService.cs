@@ -1,17 +1,17 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// RolesService.cs See LICENSE.txt in the root folder of the solution.
+// UserRolesService.cs See LICENSE.txt in the root folder of the solution.
 
 using PBACTemplate.Brokers.User;
 using PBACTemplate.Data;
 
-namespace PBACTemplate.Services.Foundations.Roles;
+namespace PBACTemplate.Services.Foundations.UserRoles;
 
-public sealed partial class RolesService(
+public sealed partial class UserRolesService(
     IUserManagerBroker userManagerBroker,
-    ILogger<RolesService> logger) : IRolesService
+    ILogger<UserRolesService> logger) : IUserRolesService
 {
     private readonly IUserManagerBroker userManagerBroker = userManagerBroker;
-    private readonly ILogger<RolesService> logger = logger;
+    private readonly ILogger<UserRolesService> logger = logger;
 
     public ValueTask<ApplicationUser> AddToRoleAsync(ApplicationUser user, string role) =>
         TryCatch(async () =>
