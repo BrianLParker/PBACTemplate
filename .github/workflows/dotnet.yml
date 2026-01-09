@@ -25,4 +25,38 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      id: test
+      continue-on-error: true
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory TestResults
+    - name: Test Summary
+      if: always()
+      run: |
+        python <<'PY'
+        import glob
+        import os
+        import sys
+        import xml.etree.ElementTree as ET
+
+        trx_files = glob.glob("TestResults/**/*.trx", recursive=True)
+        if not trx_files:
+          print("No TRX files found in TestResults.")
+          sys.exit(1)
+
+        tree = ET.parse(trx_files[0])
+        root = tree.getroot()
+        outcomes = [n.attrib.get("outcome", "") for n in root.findall(".//UnitTestResult")]
+        passed = sum(1 for outcome in outcomes if outcome == "Passed")
+        failed = sum(1 for outcome in outcomes if outcome == "Failed")
+
+        summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
+        if summary_path:
+          with open(summary_path, "a", encoding="utf-8") as summary:
+            summary.write("## Test Results\n")
+            summary.write(f"- ✅ Passed: {passed}\n")
+            summary.write(f"- ❌ Failed: {failed}\n")
+
+        print(f"Passed: {passed}")
+        print(f"Failed: {failed}")
+        if failed > 0:
+          sys.exit(1)
+        PY
