@@ -4,7 +4,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PBACTemplate.Components.Account;
-using PBACTemplate.Data;
+using PBACTemplate.Models.Data;
+using PBACTemplate.Models.User;
 
 namespace PBACTemplate.Extensions;
 

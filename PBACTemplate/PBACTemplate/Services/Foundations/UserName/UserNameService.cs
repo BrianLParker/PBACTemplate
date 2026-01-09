@@ -2,7 +2,7 @@
 // UserNameService.cs See LICENSE.txt in the root folder of the solution.
 
 using PBACTemplate.Brokers.User;
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Foundations.UserName;

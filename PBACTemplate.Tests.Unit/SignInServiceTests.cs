@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using PBACTemplate.Brokers.SignIn;
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.SignIn;
 using System.Security.Claims;
 

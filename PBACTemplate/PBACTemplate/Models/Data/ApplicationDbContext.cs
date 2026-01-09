@@ -3,8 +3,9 @@
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using PBACTemplate.Models.User;
 
-namespace PBACTemplate.Data
+namespace PBACTemplate.Models.Data
 {
     public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
     {

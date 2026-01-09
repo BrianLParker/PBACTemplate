@@ -3,7 +3,7 @@
 
 using Microsoft.Extensions.Logging;
 using PBACTemplate.Brokers.User;
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.Password;
 
 namespace PBACTemplate.Tests.Unit;

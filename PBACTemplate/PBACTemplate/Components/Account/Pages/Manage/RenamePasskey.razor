@@ -1,9 +1,10 @@
 ﻿@page "/Account/Manage/RenamePasskey/{Id}"
 
-@using PBACTemplate.Data
+@using System.Buffers.Text
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Identity
-@using System.Buffers.Text
+@using PBACTemplate.Models.Data
+@using PBACTemplate.Models.User
 
 @inject IUserOrchestrationService UserManager
 @inject IdentityRedirectManager RedirectManager

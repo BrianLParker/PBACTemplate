@@ -1,7 +1,7 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // IPasswordService.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 
 namespace PBACTemplate.Services.Foundations.Password;
 

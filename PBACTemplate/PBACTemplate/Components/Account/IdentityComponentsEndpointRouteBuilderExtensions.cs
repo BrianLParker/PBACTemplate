@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using PBACTemplate.Components.Account.Pages;
 using PBACTemplate.Components.Account.Pages.Manage;
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Orchestrations.Users;
 using System.Security.Claims;

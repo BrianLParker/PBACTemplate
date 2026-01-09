@@ -2,7 +2,7 @@
 // LoginService.Validations.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.Login.Exceptions;
 
 namespace PBACTemplate.Services.Foundations.Login;

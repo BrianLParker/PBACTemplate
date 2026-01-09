@@ -1,7 +1,7 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // TokensServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Data;
+using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.Tokens.Exceptions;
 
 namespace PBACTemplate.Tests.Unit;
