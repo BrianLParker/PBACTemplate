@@ -11,6 +11,8 @@ using PBACTemplate.Services.Foundations.Passkeys;
 using PBACTemplate.Services.Foundations.Password;
 using PBACTemplate.Services.Foundations.Phone;
 using PBACTemplate.Services.Foundations.RecoveryCodes;
+using PBACTemplate.Services.Foundations.RoleClaims;
+using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.Security;
 using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Foundations.Tokens;
@@ -46,6 +48,8 @@ public static partial class ServiceCollectionExtensions
             services.AddScoped<IUserOptionsService, UserOptionsService>();
             services.AddScoped<ISignInService, SignInService>();
             services.AddScoped<INavigationService, NavigationService>();
+            services.AddScoped<IRoleClaimsService, RoleClaimsService>();
+            services.AddScoped<IRolesService, RolesService>();
         }
     }
 }
