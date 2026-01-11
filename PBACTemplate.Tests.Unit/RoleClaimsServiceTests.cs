@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
-using Moq;
 using PBACTemplate.Brokers.Roles;
 using PBACTemplate.Services.Foundations.RoleClaims;
 using System.Security.Claims;
