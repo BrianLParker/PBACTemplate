@@ -12,61 +12,38 @@ namespace PBACTemplate.Services.Orchestrations.Administration;
 public sealed partial class AdministrationOrchestrationService(
     IRoleClaimsService roleClaimsService,
     IRolesService rolesService,
-    IRoleManagerBroker roleManagerBroker,
     ILogger<AdministrationOrchestrationService> logger) : IAdministrationOrchestrationService
 {
     private readonly IRoleClaimsService roleClaimsService = roleClaimsService;
     private readonly IRolesService rolesService = rolesService;
-    private readonly IRoleManagerBroker roleManagerBroker = roleManagerBroker;
     private readonly ILogger<AdministrationOrchestrationService> logger = logger;
 
-    public IQueryable<IdentityRole> Roles => this.roleManagerBroker.Roles;
+    public IQueryable<IdentityRole> Roles => this.rolesService.Roles;
 
-    public Task<IdentityResult> AddClaimAsync(IdentityRole role, Claim claim) =>
-        TryCatch(async () =>
-        {
-            await this.roleClaimsService.AddClaimAsync(role, claim);
-            return IdentityResult.Success;
-        });
+    public ValueTask<IdentityRole> AddClaimAsync(IdentityRole role, Claim claim) =>
+        TryCatch(() => this.roleClaimsService.AddClaimAsync(role, claim));
 
-    public Task<IdentityResult> CreateAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleManagerBroker.CreateAsync(role));
+    public ValueTask<IdentityRole> CreateRoleAsync(string roleName) =>
+        TryCatch(() => this.rolesService.CreateRoleAsync(roleName));
 
-    public Task<IdentityResult> DeleteAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleManagerBroker.DeleteAsync(role));
+    public ValueTask<IdentityRole> DeleteRoleAsync(IdentityRole role) =>
+        TryCatch(() => this.rolesService.DeleteRoleAsync(role));
 
-    public Task<IdentityRole?> FindByIdAsync(string roleId) =>
-        TryCatch(async () => await this.rolesService.RetrieveRoleByIdAsync(roleId));
+    public ValueTask<IdentityRole> RemoveClaimAsync(IdentityRole role, Claim claim) =>
+        TryCatch(() => this.roleClaimsService.RemoveClaimAsync(role, claim));
 
-    public Task<IdentityRole?> FindByNameAsync(string roleName) =>
-        TryCatch(async () => await this.rolesService.RetrieveRoleByNameAsync(roleName));
+    public ValueTask<IList<Claim>> RetrieveClaimsAsync(IdentityRole role) =>
+        TryCatch(() => this.roleClaimsService.RetrieveClaimsAsync(role));
 
-    public Task<IList<Claim>> GetClaimsAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleClaimsService.RetrieveClaimsAsync(role));
+    public ValueTask<IdentityRole?> RetrieveRoleByIdAsync(string roleId) =>
+        TryCatch(() => this.rolesService.RetrieveRoleByIdAsync(roleId));
 
-    public Task<string> GetRoleIdAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleManagerBroker.GetRoleIdAsync(role));
+    public ValueTask<IdentityRole?> RetrieveRoleByNameAsync(string roleName) =>
+        TryCatch(() => this.rolesService.RetrieveRoleByNameAsync(roleName));
 
-    public Task<string?> GetRoleNameAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleManagerBroker.GetRoleNameAsync(role));
+    public ValueTask<bool> RoleExistsAsync(string roleName) =>
+        TryCatch(() => this.rolesService.RoleExistsAsync(roleName));
 
-    public Task<IdentityResult> RemoveClaimAsync(IdentityRole role, Claim claim) =>
-        TryCatch(async () =>
-        {
-            await this.roleClaimsService.RemoveClaimAsync(role, claim);
-            return IdentityResult.Success;
-        });
-
-    public Task<bool> RoleExistsAsync(string roleName) =>
-        TryCatch(async () => await this.rolesService.RoleExistsAsync(roleName));
-
-    public Task<IdentityResult> SetRoleNameAsync(IdentityRole role, string name) =>
-        TryCatch(async () =>
-        {
-            await this.rolesService.UpdateRoleNameAsync(role, name);
-            return IdentityResult.Success;
-        });
-
-    public Task<IdentityResult> UpdateAsync(IdentityRole role) =>
-        TryCatch(async () => await this.roleManagerBroker.UpdateAsync(role));
+    public ValueTask<IdentityRole> UpdateRoleNameAsync(IdentityRole role, string newName) =>
+        TryCatch(() => this.rolesService.UpdateRoleNameAsync(role, newName));
 }

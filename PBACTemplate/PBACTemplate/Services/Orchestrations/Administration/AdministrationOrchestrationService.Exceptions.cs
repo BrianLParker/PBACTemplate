@@ -7,7 +7,7 @@ namespace PBACTemplate.Services.Orchestrations.Administration;
 
 public sealed partial class AdministrationOrchestrationService
 {
-    private async Task<T> TryCatch<T>(Func<Task<T>> returningTask)
+    private async ValueTask<T> TryCatch<T>(Func<ValueTask<T>> returningTask)
     {
         try
         {

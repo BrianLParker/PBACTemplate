@@ -7,6 +7,8 @@ namespace PBACTemplate.Services.Foundations.Roles;
 
 public interface IRolesService
 {
+    IQueryable<IdentityRole> Roles { get; }
+
     ValueTask<IdentityRole> CreateRoleAsync(string roleName);
     ValueTask<IdentityRole> UpdateRoleNameAsync(IdentityRole role, string newName);
     ValueTask<IdentityRole> DeleteRoleAsync(IdentityRole role);
