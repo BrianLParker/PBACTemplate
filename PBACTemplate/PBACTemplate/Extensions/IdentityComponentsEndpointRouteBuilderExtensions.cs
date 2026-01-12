@@ -13,7 +13,7 @@ using PBACTemplate.Components.Account.Pages.Manage;
 using PBACTemplate.Extensions;
 using PBACTemplate.Models.User;
 using PBACTemplate.Services.Foundations.SignIn;
-using PBACTemplate.Services.Orchestrations.Users;
+using PBACTemplate.Services.Orchestrations.Account;
 using System.Security.Claims;
 using System.Text.Json;
 
@@ -58,7 +58,7 @@ internal static class IdentityComponentsEndpointRouteBuilderExtensions
 
         accountGroup.MapPost("/PasskeyCreationOptions", async (
             HttpContext context,
-            [FromServices] IUserOrchestrationService userManager,
+            [FromServices] IAccountOrchestrationService userManager,
             [FromServices] ISignInService signInManager,
             [FromServices] IAntiforgery antiforgery) =>
         {
@@ -83,7 +83,7 @@ internal static class IdentityComponentsEndpointRouteBuilderExtensions
 
         accountGroup.MapPost("/PasskeyRequestOptions", async (
             HttpContext context,
-            [FromServices] IUserOrchestrationService userManager,
+            [FromServices] IAccountOrchestrationService userManager,
             [FromServices] ISignInService signInManager,
             [FromServices] IAntiforgery antiforgery,
             [FromQuery] string? username) =>
@@ -99,7 +99,7 @@ internal static class IdentityComponentsEndpointRouteBuilderExtensions
 
         manageGroup.MapPost("/LinkExternalLogin", async (
             HttpContext context,
-            [FromServices] IUserOrchestrationService userManager,
+            [FromServices] IAccountOrchestrationService userManager,
             [FromServices] ISignInService signInManager,
             [FromForm] string provider) =>
         {
@@ -120,7 +120,7 @@ internal static class IdentityComponentsEndpointRouteBuilderExtensions
 
         manageGroup.MapPost("/DownloadPersonalData", async (
             HttpContext context,
-            [FromServices] IUserOrchestrationService userManager,
+            [FromServices] IAccountOrchestrationService userManager,
             [FromServices] AuthenticationStateProvider authenticationStateProvider) =>
         {
             var user = await userManager.GetUserAsync(context.User);
