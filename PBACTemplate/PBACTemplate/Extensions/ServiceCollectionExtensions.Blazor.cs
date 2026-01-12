@@ -2,6 +2,7 @@
 // ServiceCollectionExtensions.Blazor.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.FluentUI.AspNetCore.Components;
 using PBACTemplate.Components.Account;
 
 namespace PBACTemplate.Extensions;
@@ -12,6 +13,9 @@ public static partial class ServiceCollectionExtensions
     {
         internal void AddBlazor()
         {
+            services.AddFluentUIComponents();
+            services.AddHttpClient();
+
             services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents()
