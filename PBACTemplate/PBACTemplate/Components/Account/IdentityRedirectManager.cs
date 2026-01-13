@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Services.Orchestrations.Users;
+using PBACTemplate.Services.Orchestrations.Account;
 
 namespace PBACTemplate.Components.Account;
 
@@ -52,6 +52,6 @@ internal sealed class IdentityRedirectManager(NavigationManager navigationManage
     public void RedirectToCurrentPageWithStatus(string message, HttpContext context)
         => RedirectToWithStatus(CurrentPath, message, context);
 
-    public void RedirectToInvalidUser(IUserOrchestrationService userManager, HttpContext context)
+    public void RedirectToInvalidUser(IAccountOrchestrationService userManager, HttpContext context)
         => RedirectToWithStatus("Account/InvalidUser", $"Error: Unable to load user with ID '{userManager.GetUserId(context.User)}'.", context);
 }

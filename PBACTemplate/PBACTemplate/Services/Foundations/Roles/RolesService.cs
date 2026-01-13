@@ -13,6 +13,8 @@ public sealed partial class RolesService(
     private readonly IRoleManagerBroker roleManagerBroker = roleManagerBroker;
     private readonly ILogger<RolesService> logger = logger;
 
+    public IQueryable<IdentityRole> Roles => this.roleManagerBroker.Roles;
+
     public ValueTask<IdentityRole> CreateRoleAsync(string roleName) =>
         TryCatch(async () =>
         {

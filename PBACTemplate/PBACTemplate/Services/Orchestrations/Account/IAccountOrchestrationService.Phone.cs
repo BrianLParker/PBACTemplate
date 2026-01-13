@@ -1,0 +1,18 @@
+// Copyright (c) 2026, Brian Parker. All Rights Reserved.
+// IAccountOrchestrationService.Phone.cs See LICENSE.txt in the root folder of the solution.
+
+using Microsoft.AspNetCore.Identity;
+using PBACTemplate.Models.User;
+
+namespace PBACTemplate.Services.Orchestrations.Account;
+
+public partial interface IAccountOrchestrationService
+{
+    // Phone number operations
+    Task<string?> GetPhoneNumberAsync(ApplicationUser user);
+    Task<IdentityResult> SetPhoneNumberAsync(ApplicationUser user, string? phoneNumber);
+    Task<bool> IsPhoneNumberConfirmedAsync(ApplicationUser user);
+    Task<string> GenerateChangePhoneNumberTokenAsync(ApplicationUser user, string phoneNumber);
+    Task<bool> VerifyChangePhoneNumberTokenAsync(ApplicationUser user, string token, string phoneNumber);
+    Task<IdentityResult> ChangePhoneNumberAsync(ApplicationUser user, string phoneNumber, string token);
+}

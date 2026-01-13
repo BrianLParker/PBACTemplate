@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
-using PBACTemplate.Services.Orchestrations.Users;
+using PBACTemplate.Services.Orchestrations.Account;
 using System.Security.Claims;
 
 namespace PBACTemplate.Components.Account;
@@ -25,11 +25,11 @@ internal sealed class IdentityRevalidatingAuthenticationStateProvider(
     {
         // Get the user manager from a new scope to ensure it fetches fresh data
         await using var scope = scopeFactory.CreateAsyncScope();
-        var userManager = scope.ServiceProvider.GetRequiredService<IUserOrchestrationService>();
+        var userManager = scope.ServiceProvider.GetRequiredService<IAccountOrchestrationService>();
         return await ValidateSecurityStampAsync(userManager, authenticationState.User);
     }
 
-    private async Task<bool> ValidateSecurityStampAsync(IUserOrchestrationService userManager, ClaimsPrincipal principal)
+    private async Task<bool> ValidateSecurityStampAsync(IAccountOrchestrationService userManager, ClaimsPrincipal principal)
     {
         var user = await userManager.GetUserAsync(principal);
         if (user is null)
