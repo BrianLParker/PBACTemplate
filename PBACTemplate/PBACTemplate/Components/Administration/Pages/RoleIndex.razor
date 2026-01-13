@@ -1,21 +1,26 @@
 ﻿@page "/Administration/Roles"
-
+@attribute [StreamRendering]
 <AppPageHeader Title="Roles" />
-
-
 @if (Roles == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <div class="grid">
-        <div class="head">Id</div>
-        <div class="head">Name</div>
-        @foreach (var role in Roles)
-        {
-            <div>@role.Id</div>
-            <div>@role.Name</div>
-        }
-    </div>
+    @if (Roles.Count == 0)
+    {
+        <p><em>No roles found.</em></p>
+    }
+    else
+    {
+        <div class="grid">
+            <div class="head">Id</div>
+            <div class="head">Name</div>
+            @foreach (var role in Roles)
+            {
+                <div>@role.Id</div>
+                <div>@role.Name</div>
+            }
+        </div>
+    }
 }
