@@ -2,13 +2,3 @@
             Appearance="@Appearance">
     @ChildContent
 </ButtonBase>
-@code {
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
-
-    [Parameter]
-    public EventCallback<MouseEventArgs> OnClick { get; set; }
-
-    [Parameter]
-    public ButtonAppearance Appearance { get; set; } = ButtonAppearance.Default;
-}
