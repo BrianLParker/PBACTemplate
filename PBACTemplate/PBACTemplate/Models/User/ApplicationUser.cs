@@ -2,6 +2,7 @@
 // ApplicationUser.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
+using System.Security;
 
 namespace PBACTemplate.Models.User;
 
@@ -10,3 +11,5 @@ namespace PBACTemplate.Models.User;
 public class ApplicationUser : IdentityUser
 {
 }
+
+
