@@ -1,6 +1,40 @@
 ﻿@page "/Administration/Roles"
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.EntityFrameworkCore
+@using PBACTemplate.Services.Orchestrations.Administration
 <h1>Role Index</h1>
+@if (Roles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Roles)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
 @code {
+    private List<IdentityRole>? Roles;
+
+    [Inject]
+    private IAdministrationOrchestrationService AdministrationOrchestrationService { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Roles = await AdministrationOrchestrationService.Roles.ToListAsync();
+    }
 
 }
