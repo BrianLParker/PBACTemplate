@@ -1,4 +1,8 @@
-﻿<ButtonBase/>
+﻿<ButtonBase OnClick="@OnClick">@ChildContent</ButtonBase>
 @code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
 
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
 }

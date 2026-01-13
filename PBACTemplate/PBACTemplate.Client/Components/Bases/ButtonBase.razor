@@ -1,5 +1,8 @@
-﻿<FluentButton>ButtonBase</FluentButton>
-
+﻿<FluentButton OnClick="@OnClick">@ChildContent</FluentButton>
 @code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
 
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick { get; set; }
 }
