@@ -1,5 +1,42 @@
-﻿<h3>UserIndex</h3>
+﻿@page "/Administration/Users"
+@attribute [StreamRendering]
+@using Microsoft.EntityFrameworkCore
+@using PBACTemplate.Models.Administration
+@using PBACTemplate.Models.User
+<h1>User Index</h1>
 
+@if (Users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Users)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 @code {
+    private List<ApplicationUser>? Users;
 
+    [Inject]
+    private IAccountOrchestrationService AccountOrchestrationService { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = await AccountOrchestrationService.Users.ToListAsync();
+    }
 }
