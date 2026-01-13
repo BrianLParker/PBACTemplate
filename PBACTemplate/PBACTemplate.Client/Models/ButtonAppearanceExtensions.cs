@@ -7,17 +7,12 @@ public static class ButtonAppearanceExtensions
 {
     extension(ButtonAppearance appearance)
     {
-        public Microsoft.FluentUI.AspNetCore.Components.Appearance FluentAppearance
-        {
-            get
+        public Microsoft.FluentUI.AspNetCore.Components.Appearance FluentAppearance =>
+            appearance switch
             {
-                return appearance switch
-                {
-                    ButtonAppearance.Default => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
-                    ButtonAppearance.Primary => Microsoft.FluentUI.AspNetCore.Components.Appearance.Accent,
-                    _ => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
-                };
-            }
-        }
+                ButtonAppearance.Default => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
+                ButtonAppearance.Primary => Microsoft.FluentUI.AspNetCore.Components.Appearance.Accent,
+                _ => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
+            };
     }
 }
