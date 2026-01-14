@@ -4,6 +4,7 @@
 using PBACTemplate.Brokers.Roles;
 using PBACTemplate.Brokers.SignIn;
 using PBACTemplate.Brokers.User;
+using PBACTemplate.Client.Brokers.DateTimes;
 using PBACTemplate.Client.Brokers.Navigation;
 
 namespace PBACTemplate.Extensions;
@@ -14,6 +15,7 @@ public static partial class ServiceCollectionExtensions
     {
         void AddBrokers()
         {
+            services.AddScoped<IDateTimeBroker, DateTimeBroker>();
             services.AddScoped<IUserManagerBroker, UserManagerBroker>();
             services.AddScoped<ISignInManagerBroker, SignInManagerBroker>();
             services.AddScoped<INavigationBroker, NavigationBroker>();
