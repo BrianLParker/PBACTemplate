@@ -14,7 +14,13 @@ public sealed partial class UserCrudService(
     private readonly IUserManagerBroker userManagerBroker = userManagerBroker;
     private readonly ILogger<UserCrudService> logger = logger;
 
-    public IQueryable<User> Users => this.userManagerBroker.Users.Select(user => user.MapToUser());
+    public IQueryable<User> Users =>
+        TryCatch(() =>
+        {
+            LogRetrievingUsers();
+
+            return this.userManagerBroker.Users.Select(user => user.MapToUser());
+        });
 
     public ValueTask<ApplicationUser> CreateUserAsync(ApplicationUser user) =>
         TryCatch(async () =>

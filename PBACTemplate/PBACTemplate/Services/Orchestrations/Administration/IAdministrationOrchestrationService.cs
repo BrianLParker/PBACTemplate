@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Identity;
 using PBACTemplate.Client.Models.Users;
-using PBACTemplate.Models.Users;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Orchestrations.Administration;

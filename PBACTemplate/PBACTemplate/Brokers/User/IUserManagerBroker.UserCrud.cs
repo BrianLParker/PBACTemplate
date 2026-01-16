@@ -9,6 +9,7 @@ namespace PBACTemplate.Brokers.User;
 public partial interface IUserManagerBroker
 {
     // User CRUD operations
+    IQueryable<ApplicationUser> Users { get; }
     Task<IdentityResult> CreateAsync(ApplicationUser user);
     Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
     Task<IdentityResult> UpdateAsync(ApplicationUser user);

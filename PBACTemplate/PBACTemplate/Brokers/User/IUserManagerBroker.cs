@@ -12,7 +12,6 @@ namespace PBACTemplate.Brokers.User;
 public partial interface IUserManagerBroker : IDisposable
 {
     // Properties
-    IQueryable<ApplicationUser> Users { get; }
     ILogger Logger { get; set; }
     IPasswordHasher<ApplicationUser> PasswordHasher { get; set; }
     IList<IUserValidator<ApplicationUser>> UserValidators { get; }

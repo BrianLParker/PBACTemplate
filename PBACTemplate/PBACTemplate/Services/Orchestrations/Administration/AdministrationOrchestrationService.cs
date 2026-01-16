@@ -3,7 +3,6 @@
 
 using Microsoft.AspNetCore.Identity;
 using PBACTemplate.Client.Models.Users;
-using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.RoleClaims;
 using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.UserCrud;
