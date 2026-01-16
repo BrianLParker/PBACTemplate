@@ -2,8 +2,11 @@
 // AdministrationOrchestrationService.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
+using PBACTemplate.Client.Models.Users;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.RoleClaims;
 using PBACTemplate.Services.Foundations.Roles;
+using PBACTemplate.Services.Foundations.UserCrud;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Orchestrations.Administration;
@@ -11,13 +14,16 @@ namespace PBACTemplate.Services.Orchestrations.Administration;
 public sealed partial class AdministrationOrchestrationService(
     IRoleClaimsService roleClaimsService,
     IRolesService rolesService,
+    IUserCrudService userCrudService,
     ILogger<AdministrationOrchestrationService> logger) : IAdministrationOrchestrationService
 {
     private readonly IRoleClaimsService roleClaimsService = roleClaimsService;
     private readonly IRolesService rolesService = rolesService;
+    private readonly IUserCrudService userCrudService = userCrudService;
     private readonly ILogger<AdministrationOrchestrationService> logger = logger;
 
     public IQueryable<IdentityRole> Roles => this.rolesService.Roles;
+    public IQueryable<User> Users => this.userCrudService.Users;
 
     public ValueTask<IdentityRole> AddClaimAsync(IdentityRole role, Claim claim) =>
         TryCatch(() => this.roleClaimsService.AddClaimAsync(role, claim));

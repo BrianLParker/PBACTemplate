@@ -2,7 +2,7 @@
 // IAccountOrchestrationService.UserName.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Orchestrations.Account;

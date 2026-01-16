@@ -3,7 +3,7 @@
 
 using Microsoft.Extensions.Logging;
 using PBACTemplate.Brokers.User;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.RecoveryCodes;
 
 namespace PBACTemplate.Tests.Unit;

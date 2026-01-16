@@ -2,7 +2,7 @@
 // IUserManagerBroker.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Brokers.User;
 
@@ -12,6 +12,7 @@ namespace PBACTemplate.Brokers.User;
 public partial interface IUserManagerBroker : IDisposable
 {
     // Properties
+    IQueryable<ApplicationUser> Users { get; }
     ILogger Logger { get; set; }
     IPasswordHasher<ApplicationUser> PasswordHasher { get; set; }
     IList<IUserValidator<ApplicationUser>> UserValidators { get; }
@@ -34,5 +35,4 @@ public partial interface IUserManagerBroker : IDisposable
     bool SupportsUserLockout { get; }
     bool SupportsQueryableUsers { get; }
     bool SupportsUserPasskey { get; }
-    IQueryable<ApplicationUser> Users { get; }
 }

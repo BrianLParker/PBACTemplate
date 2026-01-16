@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Identity;
 
-namespace PBACTemplate.Models.User;
+namespace PBACTemplate.Models.Users;
 
 
 // Add profile data for application users by adding properties to the ApplicationUser class

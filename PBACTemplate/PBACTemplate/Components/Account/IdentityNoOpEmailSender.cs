@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Components.Account;
 

@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Models.Data
 {

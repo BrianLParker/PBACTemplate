@@ -1,7 +1,7 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // ClaimsServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.Claims.Exceptions;
 using System.Security.Claims;
 

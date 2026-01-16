@@ -2,7 +2,7 @@
 // UserManagerBroker.Properties.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Brokers.User;
 
@@ -57,5 +57,4 @@ public sealed partial class UserManagerBroker
     public bool SupportsUserLockout => userManager.SupportsUserLockout;
     public bool SupportsQueryableUsers => userManager.SupportsQueryableUsers;
     public bool SupportsUserPasskey => userManager.SupportsUserPasskey;
-    public IQueryable<ApplicationUser> Users => userManager.Users;
 }

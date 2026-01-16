@@ -2,7 +2,7 @@
 // IUserManagerBroker.Login.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Brokers.User;
 
