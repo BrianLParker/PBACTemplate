@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // HostApplicationBuilderExtensions.cs See LICENSE.txt in the root folder of the solution.
 
+using PBACTemplate.Models.Configurations;
+
 namespace PBACTemplate.Extensions;
 
 public static class HostApplicationBuilderExtensions
@@ -9,6 +11,8 @@ public static class HostApplicationBuilderExtensions
     {
         public void AddPBAC()
         {
+            LocalConfiguration localConfig = builder.Configuration.Get<LocalConfiguration>() ?? new LocalConfiguration();
+            builder.Services.AddSingleton(localConfig);
             builder.Services.AddBlazor();
             builder.Services.AddServices();
             builder.Services.AddIdentity(builder.Configuration);
