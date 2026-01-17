@@ -12,6 +12,7 @@ public static class ButtonAppearanceExtensions
             {
                 ButtonAppearance.Default => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
                 ButtonAppearance.Primary => Microsoft.FluentUI.AspNetCore.Components.Appearance.Accent,
+                ButtonAppearance.Subtle => Microsoft.FluentUI.AspNetCore.Components.Appearance.Stealth,
                 _ => Microsoft.FluentUI.AspNetCore.Components.Appearance.Neutral,
             };
     }

@@ -7,4 +7,5 @@ public enum ButtonAppearance
 {
     Default,
     Primary,
+    Subtle,
 }
