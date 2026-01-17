@@ -1,28 +1,29 @@
 ﻿@using Microsoft.FluentUI.AspNetCore.Components
-@implements IDialogContentComponent<MenuOptions>
-@inject INavigationService NavigationManager
+@implements IDialogContentComponent<PanelOptions>
 
 @code {
-    [Parameter]
-    public MenuOptions Content { get; set; } = default!;
-
     private string? currentUrl;
+
+    [Inject]
+    private INavigationService NavigationService { get; set; } = default!;
+
+    [Parameter]
+    public PanelOptions Content { get; set; } = default!;
 
     protected override void OnInitialized()
     {
-        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-        NavigationManager.LocationChanged += OnLocationChanged;
+        currentUrl = NavigationService.ToBaseRelativePath(NavigationService.Uri);
+        NavigationService.LocationChanged += OnLocationChanged;
     }
 
     private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        currentUrl = NavigationService.ToBaseRelativePath(e.Location);
         StateHasChanged();
     }
 
     public void Dispose()
     {
-        NavigationManager.LocationChanged -= OnLocationChanged;
+        NavigationService.LocationChanged -= OnLocationChanged;
     }
-
 }

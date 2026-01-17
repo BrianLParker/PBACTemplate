@@ -8,21 +8,21 @@
     private IDialogService DialogService { get; set; } = default!;
 
     private IDialogReference? _dialog;
-    private readonly MenuOptions menuOptions = new()
+    private readonly PanelOptions panelOptions = new()
     {
         
     };
     private async Task OpenPanelLeftAsync()
     {
-        DialogParameters<MenuOptions> parameters = new()
+        DialogParameters<PanelOptions> parameters = new()
         {
-            Content = menuOptions,
+            Content = panelOptions,
             Alignment = HorizontalAlignment.Right,
             Title = "Hello",
             PrimaryAction = "Yes",
             SecondaryAction = "No",
         };
-        _dialog = await DialogService.ShowPanelAsync<RightSidePanel>(menuOptions, parameters);
+        _dialog = await DialogService.ShowPanelAsync<RightSidePanel>(panelOptions, parameters);
         DialogResult result = await _dialog.Result;
     }
 }

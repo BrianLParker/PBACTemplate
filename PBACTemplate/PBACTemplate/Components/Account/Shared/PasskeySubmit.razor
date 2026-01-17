@@ -2,7 +2,7 @@
 @using PBACTemplate.Models.Account
 @inject IServiceProvider Services
 
-<button type="submit" name="__passkeySubmit" @attributes="AdditionalAttributes">@ChildContent</button>
+<AppButton type="submit" name="__passkeySubmit" @attributes="AdditionalAttributes" Appearance="ButtonAppearance.Primary">@ChildContent</AppButton>
 <passkey-submit
     operation="@Operation"
     name="@Name"

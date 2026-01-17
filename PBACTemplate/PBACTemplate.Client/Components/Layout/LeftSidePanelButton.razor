@@ -8,13 +8,13 @@
     private IDialogService DialogService { get; set; } = default!;
 
     private IDialogReference? _dialog;
-    private readonly MenuOptions menuOptions = new()
+    private readonly PanelOptions menuOptions = new()
     {
         
     };
     private async Task OpenPanelLeftAsync()
     {
-        DialogParameters<MenuOptions> parameters = new()
+        DialogParameters<PanelOptions> parameters = new()
         {
             Content = menuOptions,
             Alignment = HorizontalAlignment.Left,

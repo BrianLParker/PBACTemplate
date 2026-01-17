@@ -1,0 +1,31 @@
+@using Microsoft.FluentUI.AspNetCore.Components
+@implements IDisposable
+<div class="nav-item px-3">
+    <form action="Account/Logout" method="post">
+        <AntiforgeryToken />
+        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+        <AppButton type="submit" Appearance="ButtonAppearance.Primary">
+            <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Logout
+        </AppButton>
+    </form>
+</div>
+@code {
+    private string? currentUrl;
+
+    [Inject]
+    private INavigationService NavigationService { get; set; } = default!;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationService.ToBaseRelativePath(NavigationService.Uri);
+        NavigationService.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationService.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose() => NavigationService.LocationChanged -= OnLocationChanged;
+}

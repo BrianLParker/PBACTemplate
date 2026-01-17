@@ -17,4 +17,7 @@ public partial class AppButton
 
     [Parameter]
     public ButtonAppearance Appearance { get; set; } = ButtonAppearance.Default;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public Dictionary<string, object>? AdditionalAttributes { get; set; }
 }
