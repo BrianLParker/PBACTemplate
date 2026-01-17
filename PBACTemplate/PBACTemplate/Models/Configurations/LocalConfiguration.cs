@@ -5,10 +5,5 @@ namespace PBACTemplate.Models.Configurations;
 
 public class LocalConfiguration
 {
-    public PBAC PBAC { get; set; } = default!;
-}
-
-public class PBAC
-{
-    public string InitialUser { get; set; } = default!;
+    public PBACConfiguration PBAC { get; set; } = default!;
 }
