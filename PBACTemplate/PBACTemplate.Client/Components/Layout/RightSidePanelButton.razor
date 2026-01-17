@@ -22,7 +22,7 @@
             PrimaryAction = "Yes",
             SecondaryAction = "No",
         };
-        _dialog = await DialogService.ShowPanelAsync<LeftSidePanel>(menuOptions, parameters);
+        _dialog = await DialogService.ShowPanelAsync<RightSidePanel>(menuOptions, parameters);
         DialogResult result = await _dialog.Result;
     }
 }

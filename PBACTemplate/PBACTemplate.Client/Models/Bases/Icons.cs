@@ -10,7 +10,7 @@ public static class Icons
     public static class Size20
     {
         public class Menu : Icon<FluentIcons.Navigation>;
-        public class Add :  Icon<FluentIcons.Add>;
+        public class Add : Icon<FluentIcons.Add>;
         public class Edit : Icon<FluentIcons.Edit>;
         public class Delete : Icon<FluentIcons.Delete>;
         public class Save : Icon<FluentIcons.Save>;

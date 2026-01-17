@@ -1,5 +1,5 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// IconBase.razor.cs See LICENSE.txt in the root folder of the solution.
+// AppIcon.razor.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Components;
 
