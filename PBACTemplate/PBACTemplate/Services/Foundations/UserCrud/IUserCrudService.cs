@@ -1,12 +1,15 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // IUserCrudService.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Models.User;
+using PBACTemplate.Client.Models.Users;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Services.Foundations.UserCrud;
 
 public interface IUserCrudService
 {
+    IQueryable<User> Users { get; }
+
     ValueTask<ApplicationUser> CreateUserAsync(ApplicationUser user);
     ValueTask<ApplicationUser> CreateUserWithPasswordAsync(ApplicationUser user, string password);
     ValueTask<ApplicationUser> UpdateUserAsync(ApplicationUser user);

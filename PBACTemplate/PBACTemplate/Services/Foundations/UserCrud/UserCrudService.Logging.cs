@@ -27,6 +27,11 @@ public partial class UserCrudService
 
     [LoggerMessage(
         Level = LogLevel.Information,
+        Message = "Retrieving users")]
+    private partial void LogRetrievingUsers();
+
+    [LoggerMessage(
+        Level = LogLevel.Information,
         Message = "Retrieving user by ID {UserId}")]
     private partial void LogRetrievingUserById(string userId);
 

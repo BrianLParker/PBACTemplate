@@ -1,13 +1,46 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // UserCrudServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.UserCrud.Exceptions;
 
 namespace PBACTemplate.Tests.Unit;
 
 public partial class UserCrudServiceTests
 {
+    [Fact]
+    public void ShouldThrowUserCrudServiceExceptionOnUsersIfExceptionOccurs()
+    {
+        // Given
+        var someException = new Exception(GetRandomString());
+
+        this.userManagerBrokerMock.Setup(broker =>
+            broker.Users)
+                .Throws(someException);
+
+        var expectedException = new UserCrudServiceException(
+            "User CRUD service error occurred, contact support.",
+            new FailedUserCrudServiceException(
+                "Failed user CRUD service error occurred, contact support.",
+                someException));
+
+        // When
+        Action action = () => _ = this.userCrudService.Users.ToList();
+
+        // Then
+        UserCrudServiceException actualException =
+            Assert.Throws<UserCrudServiceException>(action);
+
+        Assert.Equal(expectedException.Message, actualException.Message);
+        Assert.IsType<FailedUserCrudServiceException>(actualException.InnerException);
+
+        this.userManagerBrokerMock.VerifyGet(broker =>
+            broker.Users,
+            Times.Once);
+
+        VerifyNoOtherBrokerCalls();
+    }
+
     [Fact]
     public async Task ShouldThrowUserCrudServiceExceptionOnCreateUserAsyncIfExceptionOccurs()
     {

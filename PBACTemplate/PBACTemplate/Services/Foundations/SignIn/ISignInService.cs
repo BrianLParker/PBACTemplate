@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Foundations.SignIn;

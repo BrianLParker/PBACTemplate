@@ -1,7 +1,7 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // AuthTokensServiceTests.Exceptions.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.AuthTokens.Exceptions;
 
 namespace PBACTemplate.Tests.Unit;

@@ -2,7 +2,7 @@
 // AccountOrchestrationService.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.AuthTokens;
 using PBACTemplate.Services.Foundations.Claims;
 using PBACTemplate.Services.Foundations.Email;

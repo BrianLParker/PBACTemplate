@@ -1,0 +1,28 @@
+﻿@using Microsoft.FluentUI.AspNetCore.Components
+@rendermode RenderMode.InteractiveWebAssembly
+<AppButton Appearance="ButtonAppearance.Subtle" OnClick="OpenPanelLeftAsync">
+    <AppIcon Icon="Icons.Size20.Menu" />
+</AppButton>
+@code {
+    [Inject]
+    private IDialogService DialogService { get; set; } = default!;
+
+    private IDialogReference? _dialog;
+    private readonly MenuOptions menuOptions = new()
+    {
+        
+    };
+    private async Task OpenPanelLeftAsync()
+    {
+        DialogParameters<MenuOptions> parameters = new()
+        {
+            Content = menuOptions,
+            Alignment = HorizontalAlignment.Right,
+            Title = "Hello",
+            PrimaryAction = "Yes",
+            SecondaryAction = "No",
+        };
+        _dialog = await DialogService.ShowPanelAsync<RightSidePanel>(menuOptions, parameters);
+        DialogResult result = await _dialog.Result;
+    }
+}

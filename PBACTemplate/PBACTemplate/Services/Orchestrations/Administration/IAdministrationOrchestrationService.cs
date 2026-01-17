@@ -2,6 +2,7 @@
 // IAdministrationOrchestrationService.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
+using PBACTemplate.Client.Models.Users;
 using System.Security.Claims;
 
 namespace PBACTemplate.Services.Orchestrations.Administration;
@@ -9,6 +10,7 @@ namespace PBACTemplate.Services.Orchestrations.Administration;
 public interface IAdministrationOrchestrationService
 {
     IQueryable<IdentityRole> Roles { get; }
+    IQueryable<User> Users { get; }
 
     ValueTask<IdentityRole> CreateRoleAsync(string roleName);
     ValueTask<IdentityRole> UpdateRoleNameAsync(IdentityRole role, string newName);

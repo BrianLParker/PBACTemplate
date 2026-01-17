@@ -1,0 +1,11 @@
+﻿@Code
+@code {
+    string Mode => this.RendererInfo.IsInteractive switch
+    {
+        true => "i",
+        false => "s"
+    };
+    string Name => this.RendererInfo.Name;
+
+    string Code => Name.Substring(0,1)+Mode.Substring(0,1);
+}

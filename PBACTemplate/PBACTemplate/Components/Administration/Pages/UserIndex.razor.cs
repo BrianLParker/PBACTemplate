@@ -4,21 +4,22 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using PBACTemplate.Client.Models;
+using PBACTemplate.Client.Models.Users;
 using PBACTemplate.Models.Administration;
-using PBACTemplate.Models.User;
-using PBACTemplate.Services.Orchestrations.Account;
+using PBACTemplate.Models.Users;
+using PBACTemplate.Services.Orchestrations.Administration;
 
 namespace PBACTemplate.Components.Administration.Pages;
 
 public partial class UserIndex
 {
-    private List<ApplicationUser>? Users;
+    private List<User>? Users;
 
     [Inject]
-    private IAccountOrchestrationService AccountOrchestrationService { get; set; } = default!;
+    private IAdministrationOrchestrationService AdminService { get; set; } = default!;
 
     protected override async Task OnInitializedAsync()
     {
-        Users = await AccountOrchestrationService.Users.ToListAsync();
+        Users = await AdminService.Users.ToListAsync();
     }
 }

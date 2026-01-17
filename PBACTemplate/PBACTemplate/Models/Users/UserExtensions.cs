@@ -1,53 +1,13 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// MyUser.cs See LICENSE.txt in the root folder of the solution.
+// UserExtensions.cs See LICENSE.txt in the root folder of the solution.
 
-using Microsoft.AspNetCore.Identity;
+using PBACTemplate.Client.Models.Users;
 
-namespace PBACTemplate.Models.User;
+namespace PBACTemplate.Models.Users;
 
-public class MyUser
+public static class UserExtensions
 {
-    [PersonalData]
-    public string Id { get; set; } = default!;
-
-    [ProtectedPersonalData]
-    public string? UserName { get; set; }
-
-    public string? NormalizedUserName { get; set; }
-
-    [ProtectedPersonalData]
-    public string? Email { get; set; }
-
-    public string? NormalizedEmail { get; set; }
-
-    [PersonalData]
-    public bool EmailConfirmed { get; set; }
-
-    public string? PasswordHash { get; set; }
-
-    public string? SecurityStamp { get; set; } = Guid.NewGuid().ToString();
-
-    public string? ConcurrencyStamp { get; set; } = Guid.NewGuid().ToString();
-
-    [ProtectedPersonalData]
-    public string? PhoneNumber { get; set; }
-
-    [PersonalData]
-    public bool PhoneNumberConfirmed { get; set; }
-
-    [PersonalData]
-    public bool TwoFactorEnabled { get; set; }
-
-    public DateTimeOffset? LockoutEnd { get; set; }
-
-    public bool LockoutEnabled { get; set; }
-
-    public int AccessFailedCount { get; set; }
-}
-
-public static class MyUserExtensions
-{
-    extension(MyUser user)
+    extension(User user)
     {
         public ApplicationUser ToApplicationUser() =>
             new ApplicationUser
@@ -71,8 +31,8 @@ public static class MyUserExtensions
     }
     extension(ApplicationUser user)
     {
-        public MyUser ToMyUser() =>
-            new MyUser
+        public User MapToUser() =>
+            new User
             {
                 Id = user.Id,
                 UserName = user.UserName,

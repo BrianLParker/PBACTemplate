@@ -3,7 +3,7 @@
 
 using Microsoft.AspNetCore.Identity;
 using PBACTemplate.Brokers.User;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Services.Foundations.UserOptions;
 

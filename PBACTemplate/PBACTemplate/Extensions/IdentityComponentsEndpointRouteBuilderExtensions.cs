@@ -11,7 +11,7 @@ using Microsoft.Extensions.Primitives;
 using PBACTemplate.Components.Account.Pages;
 using PBACTemplate.Components.Account.Pages.Manage;
 using PBACTemplate.Extensions;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.SignIn;
 using PBACTemplate.Services.Orchestrations.Account;
 using System.Security.Claims;

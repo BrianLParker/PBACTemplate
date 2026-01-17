@@ -4,7 +4,7 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Models.User;
+using PBACTemplate.Models.Users;
 using System.Security.Claims;
 
 namespace PBACTemplate.Tests.Unit;
