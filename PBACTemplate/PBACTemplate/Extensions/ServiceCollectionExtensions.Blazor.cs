@@ -19,7 +19,10 @@ public static partial class ServiceCollectionExtensions
             services.AddRazorComponents()
                 .AddInteractiveServerComponents()
                 .AddInteractiveWebAssemblyComponents()
-                .AddAuthenticationStateSerialization();
+                .AddAuthenticationStateSerialization(options =>
+                {
+                    options.SerializeAllClaims = true;
+                });
 
             services.AddCascadingAuthenticationState();
             services.AddScoped<IdentityRedirectManager>();
