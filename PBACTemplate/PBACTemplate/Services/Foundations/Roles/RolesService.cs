@@ -2,7 +2,10 @@
 // RolesService.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using PBACTemplate.Brokers.Roles;
+using PBACTemplate.Services.Foundations.Roles.Exceptions;
+using System.Collections.Immutable;
 
 namespace PBACTemplate.Services.Foundations.Roles;
 
@@ -13,79 +16,111 @@ public sealed partial class RolesService(
     private readonly IRoleManagerBroker roleManagerBroker = roleManagerBroker;
     private readonly ILogger<RolesService> logger = logger;
 
-    public IQueryable<IdentityRole> Roles => this.roleManagerBroker.Roles;
-
-    public ValueTask<IdentityRole> CreateRoleAsync(string roleName) =>
+    public ValueTask<string> CreateRoleAsync(string roleName) =>
         TryCatch(async () =>
         {
             ValidateRoleName(roleName);
 
             LogCreatingRole(roleName);
 
-            var role = new IdentityRole(roleName);
-            var result = await this.roleManagerBroker.CreateAsync(role);
+            bool exists = await roleManagerBroker.RoleExistsAsync(roleName);
+
+            if (exists)
+            {
+                throw new InvalidRolesException($"Role '{roleName}' already exists.");
+            }
+
+            IdentityRole role = new(roleName);
+
+            IdentityResult result = await roleManagerBroker.CreateAsync(role);
+
             ValidateIdentityResult(result);
 
-            return role;
+            return roleName;
         });
 
-    public ValueTask<IdentityRole> UpdateRoleNameAsync(IdentityRole role, string newName) =>
-        TryCatch(async () =>
-        {
-            ValidateRole(role);
-            ValidateRoleName(newName);
-
-            LogUpdatingRoleName(role.Id, newName);
-
-            var result = await this.roleManagerBroker.SetRoleNameAsync(role, newName);
-            ValidateIdentityResult(result);
-
-            result = await this.roleManagerBroker.UpdateAsync(role);
-            ValidateIdentityResult(result);
-
-            return role;
-        });
-
-    public ValueTask<IdentityRole> DeleteRoleAsync(IdentityRole role) =>
-        TryCatch(async () =>
-        {
-            ValidateRole(role);
-
-            LogDeletingRole(role.Id);
-
-            var result = await this.roleManagerBroker.DeleteAsync(role);
-            ValidateIdentityResult(result);
-
-            return role;
-        });
-
-    public ValueTask<bool> RoleExistsAsync(string roleName) =>
+    public ValueTask<bool> RemoveRoleAsync(string roleName) =>
         TryCatch(async () =>
         {
             ValidateRoleName(roleName);
 
-            LogCheckingRoleExists(roleName);
+            IdentityRole? role = await roleManagerBroker.FindByNameAsync(roleName);
 
-            return await this.roleManagerBroker.RoleExistsAsync(roleName);
+            if (role is null)
+            {
+                throw new NullRolesException($"Role '{roleName}' was not found.");
+            }
+
+            LogRemovingRole(roleName);
+
+            IdentityResult result = await roleManagerBroker.DeleteAsync(role);
+
+            ValidateIdentityResult(result);
+
+            return true;
         });
 
-    public ValueTask<IdentityRole?> RetrieveRoleByIdAsync(string roleId) =>
-        TryCatch(async () =>
-        {
-            ValidateRoleId(roleId);
-
-            LogRetrievingRoleById(roleId);
-
-            return await this.roleManagerBroker.FindByIdAsync(roleId);
-        });
-
-    public ValueTask<IdentityRole?> RetrieveRoleByNameAsync(string roleName) =>
+    public ValueTask<string?> RetrieveRoleAsync(string roleName) =>
         TryCatch(async () =>
         {
             ValidateRoleName(roleName);
 
-            LogRetrievingRoleByName(roleName);
+            LogRetrievingRole(roleName);
 
-            return await this.roleManagerBroker.FindByNameAsync(roleName);
+            IdentityRole? role = await roleManagerBroker.FindByNameAsync(roleName);
+
+            if (role is null)
+            {
+                return null;
+            }
+
+            return await roleManagerBroker.GetRoleNameAsync(role);
+        });
+
+    public ValueTask<ImmutableList<string>> RetrieveRolesAsync() =>
+        TryCatch(async () =>
+        {
+            LogRetrievingRoles();
+
+            List<string> roleNames = await roleManagerBroker.Roles
+                .Select(role => role.Name!)
+                .Where(name => !string.IsNullOrWhiteSpace(name))
+                .ToListAsync();
+
+            return roleNames.ToImmutableList();
+        });
+
+    public ValueTask<string> UpdateRoleAsync(string roleName, string newRoleName) =>
+        TryCatch(async () =>
+        {
+            ValidateRoleName(roleName);
+            ValidateRoleName(newRoleName);
+
+            IdentityRole? role = await roleManagerBroker.FindByNameAsync(roleName);
+
+            if (role is null)
+            {
+                throw new NullRolesException($"Role '{roleName}' was not found.");
+            }
+
+            if (!string.Equals(roleName, newRoleName, StringComparison.OrdinalIgnoreCase))
+            {
+                bool duplicate = await roleManagerBroker.RoleExistsAsync(newRoleName);
+
+                if (duplicate)
+                {
+                    throw new InvalidRolesException($"Role '{newRoleName}' already exists.");
+                }
+            }
+
+            LogUpdatingRole(roleName, newRoleName);
+
+            IdentityResult renameResult = await roleManagerBroker.SetRoleNameAsync(role, newRoleName);
+            ValidateIdentityResult(renameResult);
+
+            IdentityResult updateResult = await roleManagerBroker.UpdateAsync(role);
+            ValidateIdentityResult(updateResult);
+
+            return newRoleName;
         });
 }

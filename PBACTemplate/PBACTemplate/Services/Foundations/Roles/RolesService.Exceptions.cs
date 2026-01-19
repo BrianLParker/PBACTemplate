@@ -31,10 +31,9 @@ public sealed partial class RolesService
         }
         catch (Exception exception)
         {
-            var failedServiceException =
-                new FailedRolesServiceException(
-                    "Failed roles service error occurred, contact support.",
-                    exception);
+            var failedServiceException = new FailedRolesServiceException(
+                "Failed roles service error occurred, contact support.",
+                exception);
 
             LogFailedRolesServiceException(failedServiceException);
 

@@ -12,28 +12,23 @@ public sealed partial class RolesService
 
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "Updating role {RoleId} name to {NewName}")]
-    private partial void LogUpdatingRoleName(string roleId, string newName);
+        Message = "Removing role {RoleName}")]
+    private partial void LogRemovingRole(string roleName);
 
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "Deleting role {RoleId}")]
-    private partial void LogDeletingRole(string roleId);
+        Message = "Retrieving role {RoleName}")]
+    private partial void LogRetrievingRole(string roleName);
 
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "Checking existence of role {RoleName}")]
-    private partial void LogCheckingRoleExists(string roleName);
+        Message = "Retrieving all roles")]
+    private partial void LogRetrievingRoles();
 
     [LoggerMessage(
         Level = LogLevel.Information,
-        Message = "Retrieving role by ID {RoleId}")]
-    private partial void LogRetrievingRoleById(string roleId);
-
-    [LoggerMessage(
-        Level = LogLevel.Information,
-        Message = "Retrieving role by name {RoleName}")]
-    private partial void LogRetrievingRoleByName(string roleName);
+        Message = "Updating role {RoleName} to {NewRoleName}")]
+    private partial void LogUpdatingRole(string roleName, string newRoleName);
 
     [LoggerMessage(
         Level = LogLevel.Error,

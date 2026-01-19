@@ -8,27 +8,16 @@ namespace PBACTemplate.Services.Foundations.Roles;
 
 public sealed partial class RolesService
 {
-    private static void ValidateRole(IdentityRole role)
-    {
-        if (role is null)
-        {
-            throw new NullRolesException("Role cannot be null.");
-        }
-    }
-
-    private static void ValidateRoleId(string roleId)
-    {
-        if (string.IsNullOrWhiteSpace(roleId))
-        {
-            throw new InvalidRolesException("Role ID cannot be null or whitespace.");
-        }
-    }
-
     private static void ValidateRoleName(string roleName)
     {
+        if (roleName is null)
+        {
+            throw new NullRolesException("Role name cannot be null.");
+        }
+
         if (string.IsNullOrWhiteSpace(roleName))
         {
-            throw new InvalidRolesException("Role name cannot be null or whitespace.");
+            throw new InvalidRolesException("Role name cannot be empty or whitespace.");
         }
     }
 
@@ -36,10 +25,9 @@ public sealed partial class RolesService
     {
         if (!result.Succeeded)
         {
-            var errors = string.Join(", ", result.Errors.Select(error => error.Description));
+            string errors = string.Join(", ", result.Errors.Select(error => error.Description));
 
-            throw new FailedRolesOperationException(
-                $"Role identity operation failed: {errors}");
+            throw new FailedRolesOperationException($"Role identity operation failed: {errors}");
         }
     }
 }

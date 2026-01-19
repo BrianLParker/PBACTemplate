@@ -14,12 +14,10 @@ else
     else
     {
         <div class="grid">
-            <div class="head">Id</div>
             <div class="head">Name</div>
             @foreach (var role in Roles)
             {
-                <div>@role.Id</div>
-                <div>@role.Name</div>
+                <div>@role</div>
             }
         </div>
     }
