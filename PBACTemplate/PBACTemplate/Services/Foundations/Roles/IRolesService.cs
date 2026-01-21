@@ -12,5 +12,4 @@ public interface IRolesService
     ValueTask<string> CreateRoleAsync(string roleName);
     ValueTask<string> UpdateRoleAsync(string roleName, string newRoleName);
     ValueTask<bool> RemoveRoleAsync(string roleName);
-
 }
