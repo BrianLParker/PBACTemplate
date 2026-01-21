@@ -3,6 +3,7 @@
     <File Path="LICENSE.txt" />
     <File Path="README.md" />
   </Folder>
+  <Project Path="PBACTemplate.Tests.Intergration/PBACTemplate.Tests.Integration.csproj" Id="bcbac928-e602-49b1-9972-8de4505a69a6" />
   <Project Path="PBACTemplate.Tests.Unit/PBACTemplate.Tests.Unit.csproj" Id="d6bb1a40-5353-46da-9882-0d3ae9df97cb" />
   <Project Path="PBACTemplate/PBACTemplate.Client/PBACTemplate.Client.csproj" />
   <Project Path="PBACTemplate/PBACTemplate/PBACTemplate.csproj" />

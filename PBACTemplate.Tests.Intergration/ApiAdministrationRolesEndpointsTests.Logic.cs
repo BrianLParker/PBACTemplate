@@ -1,13 +1,13 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// AdministrationRolesEndpointsBuilderTests.Logic.cs See LICENSE.txt in the root folder of the solution.
+// ApiAdministrationRolesEndpointsTests.Logic.cs See LICENSE.txt in the root folder of the solution.
 
 using FluentAssertions;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace PBACTemplate.Tests.Unit;
+namespace PBACTemplate.Tests.Integration;
 
-public partial class AdministrationRolesEndpointsBuilderTests
+public partial class ApiAdministrationRolesEndpointsTests
 {
     [Fact]
     public async Task GetRoleNames_ShouldReturnOkWithNames()

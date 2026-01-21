@@ -1,5 +1,5 @@
 // Copyright (c) 2026, Brian Parker. All Rights Reserved.
-// AdministrationRolesEndpointsBuilderTests.cs See LICENSE.txt in the root folder of the solution.
+// ApiAdministrationRolesEndpointsTests.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -12,14 +12,14 @@ using PBACTemplate.Services.Foundations.Roles.Exceptions;
 using System.Security.Claims;
 using System.Text.Encodings.Web;
 
-namespace PBACTemplate.Tests.Unit;
+namespace PBACTemplate.Tests.Integration;
 
-public partial class AdministrationRolesEndpointsBuilderTests : IClassFixture<WebApplicationFactory<Program>>
+public partial class ApiAdministrationRolesEndpointsTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private const string TestScheme = "TestAuth";
     private readonly WebApplicationFactory<Program> factory;
 
-    public AdministrationRolesEndpointsBuilderTests(WebApplicationFactory<Program> baseFactory)
+    public ApiAdministrationRolesEndpointsTests(WebApplicationFactory<Program> baseFactory)
     {
         this.factory = baseFactory.WithWebHostBuilder(builder =>
         {
