@@ -10,7 +10,7 @@ public interface IUserService
 {
     ValueTask<ImmutableList<User>> GetUsersAsync(CancellationToken cancellationToken = default);
     ValueTask<User?> GetUserAsync(string userId, CancellationToken cancellationToken = default);
-    ValueTask<User?> CreateUserAsync(User user, CancellationToken cancellationToken = default);
-    ValueTask<User?> UpdateUserAsync(string userId, User user, CancellationToken cancellationToken = default);
+    ValueTask<User> CreateUserAsync(User user, CancellationToken cancellationToken = default);
+    ValueTask<User> UpdateUserAsync(string userId, User user, CancellationToken cancellationToken = default);
     ValueTask<bool> DeleteUserAsync(string userId, CancellationToken cancellationToken = default);
 }

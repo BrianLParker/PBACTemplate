@@ -15,7 +15,7 @@ public sealed partial class UserService(
     private readonly IHttpClientBroker httpClient = httpClient;
     private readonly ILogger<UserService> logger = logger;
 
-    public ValueTask<User?> CreateUserAsync(
+    public ValueTask<User> CreateUserAsync(
         User user,
         CancellationToken cancellationToken = default) =>
         TryCatch(async () =>
@@ -74,7 +74,7 @@ public sealed partial class UserService(
             return await this.httpClient.GetUsersAsync(cancellationToken);
         });
 
-    public ValueTask<User?> UpdateUserAsync(
+    public ValueTask<User> UpdateUserAsync(
         string userId,
         User user,
         CancellationToken cancellationToken = default) =>
