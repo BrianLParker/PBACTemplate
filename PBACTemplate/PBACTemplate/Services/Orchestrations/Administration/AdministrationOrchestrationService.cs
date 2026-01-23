@@ -1,7 +1,7 @@
 ﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // AdministrationOrchestrationService.cs See LICENSE.txt in the root folder of the solution.
 
-using PBACTemplate.Client.Models.Users;
+using PBACTemplate.Models.Users;
 using PBACTemplate.Services.Foundations.RoleClaims;
 using PBACTemplate.Services.Foundations.Roles;
 using PBACTemplate.Services.Foundations.UserCrud;
@@ -21,6 +21,6 @@ public sealed partial class AdministrationOrchestrationService(
     private readonly ILogger<AdministrationOrchestrationService> logger = logger;
 
     public async ValueTask<ImmutableList<string>> RetrieveRolesAsync() => await this.rolesService.RetrieveRolesAsync();
-    public IQueryable<User> Users => this.userCrudService.Users;
+    public IQueryable<ApplicationUser> Users => this.userCrudService.Users;
 
 }

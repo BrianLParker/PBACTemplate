@@ -2,7 +2,6 @@
 // UserCrudServiceTests.Logic.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
-using PBACTemplate.Client.Models.Users;
 using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Tests.Unit;
@@ -20,14 +19,14 @@ public partial class UserCrudServiceTests
                 new ApplicationUser { Id = Guid.NewGuid().ToString(), UserName = GetRandomString() }
             }.AsQueryable();
 
-        IQueryable<User> expectedUsers = brokerUsers.Select(user => user.MapToUser());
+        IQueryable<ApplicationUser> expectedUsers = brokerUsers;
 
         this.userManagerBrokerMock.Setup(broker =>
             broker.Users)
                 .Returns(brokerUsers);
 
         // When
-        IQueryable<User> actualUsers = this.userCrudService.Users;
+        IQueryable<ApplicationUser> actualUsers = this.userCrudService.Users;
 
         // Then
         Assert.Equivalent(expectedUsers.ToList(), actualUsers.ToList());

@@ -2,7 +2,6 @@
 // UserCrudService.cs See LICENSE.txt in the root folder of the solution.
 
 using PBACTemplate.Brokers.User;
-using PBACTemplate.Client.Models.Users;
 using PBACTemplate.Models.Users;
 
 namespace PBACTemplate.Services.Foundations.UserCrud;
@@ -14,12 +13,12 @@ public sealed partial class UserCrudService(
     private readonly IUserManagerBroker userManagerBroker = userManagerBroker;
     private readonly ILogger<UserCrudService> logger = logger;
 
-    public IQueryable<User> Users =>
+    public IQueryable<ApplicationUser> Users =>
         TryCatch(() =>
         {
             LogRetrievingUsers();
 
-            return this.userManagerBroker.Users.Select(user => user.MapToUser());
+            return this.userManagerBroker.Users;
         });
 
     public ValueTask<ApplicationUser> CreateUserAsync(ApplicationUser user) =>

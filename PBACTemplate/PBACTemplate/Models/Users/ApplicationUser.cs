@@ -2,13 +2,19 @@
 // ApplicationUser.cs See LICENSE.txt in the root folder of the solution.
 
 using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace PBACTemplate.Models.Users;
 
-
-// Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
 {
+    [PersonalData]
+    [MaxLength(100)]
+    public string FirstName { get; set; } = string.Empty;
+
+    [PersonalData]
+    [MaxLength(100)]
+    public string LastName { get; set; } = string.Empty;
 }
 
 

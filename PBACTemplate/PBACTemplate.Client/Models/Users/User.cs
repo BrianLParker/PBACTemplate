@@ -1,38 +1,42 @@
-// Copyright (c) 2026, Brian Parker. All Rights Reserved.
+﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // User.cs See LICENSE.txt in the root folder of the solution.
+
+using System;
+using System.Collections.Generic;
 
 namespace PBACTemplate.Client.Models.Users;
 
 public class User
 {
-    public string Id { get; set; } = default!;
+    public Guid Id { get; set; }
 
-    public string? UserName { get; set; }
+    public string UserName { get; set; } = string.Empty;
 
-    public string? NormalizedUserName { get; set; }
-
-    public string? Email { get; set; }
-
-    public string? NormalizedEmail { get; set; }
+    public string Email { get; set; } = string.Empty;
 
     public bool EmailConfirmed { get; set; }
 
-    public string? PasswordHash { get; set; }
+    public string FirstName { get; set; } = string.Empty;
 
-    public string? SecurityStamp { get; set; } = default!;
+    public string LastName { get; set; } = string.Empty;
 
-    public string? ConcurrencyStamp { get; set; } = default!;
-
-    public string? PhoneNumber { get; set; }
+    public string PhoneNumber { get; set; } = string.Empty;
 
     public bool PhoneNumberConfirmed { get; set; }
 
-    public bool TwoFactorEnabled { get; set; }
+    public bool IsActive { get; set; }
 
-    public DateTimeOffset? LockoutEnd { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
-    public bool LockoutEnabled { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
+
+    public DateTimeOffset? LastSignInAt { get; set; }
 
     public int AccessFailedCount { get; set; }
-}
 
+    public string? ConcurrencyStamp { get; set; }
+
+    public string? AvatarUrl { get; set; }
+
+    public List<string> Roles { get; set; } = new();
+}
