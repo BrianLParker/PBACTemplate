@@ -16,7 +16,7 @@ public partial class UserServiceTests
         var someException = new Exception("boom");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()))
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()))
             .ThrowsAsync(someException);
 
         var expectedException = new UsersServiceException(
@@ -27,7 +27,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.CreateAdministrationUserAsync(inputUser);
+            await this.userService.CreateUserAsync(inputUser);
 
         // Then
         UsersServiceException actualException =
@@ -37,7 +37,7 @@ public partial class UserServiceTests
         Assert.IsType<FailedUsersServiceException>(actualException.InnerException);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -52,7 +52,7 @@ public partial class UserServiceTests
         var someException = new Exception("boom");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
             .ThrowsAsync(someException);
 
         var expectedException = new UsersServiceException(
@@ -63,7 +63,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.UpdateAdministrationUserAsync(userId, inputUser);
+            await this.userService.UpdateUserAsync(userId, inputUser);
 
         // Then
         UsersServiceException actualException =
@@ -73,7 +73,7 @@ public partial class UserServiceTests
         Assert.IsType<FailedUsersServiceException>(actualException.InnerException);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -87,7 +87,7 @@ public partial class UserServiceTests
         var someException = new Exception("boom");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()))
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()))
             .ThrowsAsync(someException);
 
         var expectedException = new UsersServiceException(
@@ -98,7 +98,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.DeleteAdministrationUserAsync(userId);
+            await this.userService.DeleteUserAsync(userId);
 
         // Then
         UsersServiceException actualException =
@@ -108,7 +108,7 @@ public partial class UserServiceTests
         Assert.IsType<FailedUsersServiceException>(actualException.InnerException);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()),
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -122,7 +122,7 @@ public partial class UserServiceTests
         var someException = new Exception("boom");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.GetAdministrationUserAsync(userId, It.IsAny<CancellationToken>()))
+            broker.GetUserAsync(userId, It.IsAny<CancellationToken>()))
             .ThrowsAsync(someException);
 
         var expectedException = new UsersServiceException(
@@ -133,7 +133,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.GetAdministrationUserAsync(userId);
+            await this.userService.GetUserAsync(userId);
 
         // Then
         UsersServiceException actualException =
@@ -143,7 +143,7 @@ public partial class UserServiceTests
         Assert.IsType<FailedUsersServiceException>(actualException.InnerException);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.GetAdministrationUserAsync(userId, It.IsAny<CancellationToken>()),
+            broker.GetUserAsync(userId, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -156,7 +156,7 @@ public partial class UserServiceTests
         var someException = new Exception("boom");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.GetAdministrationUsersAsync(It.IsAny<CancellationToken>()))
+            broker.GetUsersAsync(It.IsAny<CancellationToken>()))
             .ThrowsAsync(someException);
 
         var expectedException = new UsersServiceException(
@@ -167,7 +167,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.GetAdministrationUsersAsync();
+            await this.userService.GetUsersAsync();
 
         // Then
         UsersServiceException actualException =
@@ -177,7 +177,7 @@ public partial class UserServiceTests
         Assert.IsType<FailedUsersServiceException>(actualException.InnerException);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.GetAdministrationUsersAsync(It.IsAny<CancellationToken>()),
+            broker.GetUsersAsync(It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -191,12 +191,12 @@ public partial class UserServiceTests
         var expectedException = new FailedUsersOperationException("Failed to create user.");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()))
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()))
             .ReturnsAsync((User?)null);
 
         // When
         Func<Task> action = async () =>
-            await this.userService.CreateAdministrationUserAsync(inputUser);
+            await this.userService.CreateUserAsync(inputUser);
 
         // Then
         FailedUsersOperationException actualException =
@@ -205,7 +205,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -220,12 +220,12 @@ public partial class UserServiceTests
         var expectedException = new FailedUsersOperationException("Failed to update user.");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
             .ReturnsAsync((User?)null);
 
         // When
         Func<Task> action = async () =>
-            await this.userService.UpdateAdministrationUserAsync(userId, inputUser);
+            await this.userService.UpdateUserAsync(userId, inputUser);
 
         // Then
         FailedUsersOperationException actualException =
@@ -234,7 +234,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
@@ -248,12 +248,12 @@ public partial class UserServiceTests
         var expectedException = new FailedUsersOperationException("Failed to delete user.");
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()))
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(false);
 
         // When
         Func<Task> action = async () =>
-            await this.userService.DeleteAdministrationUserAsync(userId);
+            await this.userService.DeleteUserAsync(userId);
 
         // Then
         FailedUsersOperationException actualException =
@@ -262,7 +262,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()),
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();

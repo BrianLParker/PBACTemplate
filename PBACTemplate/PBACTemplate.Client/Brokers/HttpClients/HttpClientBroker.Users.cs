@@ -11,7 +11,7 @@ public partial class HttpClientBroker
 {
     private const string AdministrationUsersBasePath = "/Api/Administration/Users";
 
-    public async ValueTask<ImmutableList<User>> GetAdministrationUsersAsync(CancellationToken cancellationToken = default)
+    public async ValueTask<ImmutableList<User>> GetUsersAsync(CancellationToken cancellationToken = default)
     {
         using HttpResponseMessage response = await this.httpClient.GetAsync(
             $"{AdministrationUsersBasePath}/",
@@ -26,7 +26,7 @@ public partial class HttpClientBroker
                ?? []).ToImmutableList();
     }
 
-    public async ValueTask<User?> GetAdministrationUserAsync(string userId, CancellationToken cancellationToken = default)
+    public async ValueTask<User?> GetUserAsync(string userId, CancellationToken cancellationToken = default)
     {
         using HttpResponseMessage response = await this.httpClient.GetAsync(
             $"{AdministrationUsersBasePath}/{userId}",
@@ -40,7 +40,7 @@ public partial class HttpClientBroker
         return await response.Content.ReadFromJsonAsync<User>(cancellationToken);
     }
 
-    public async ValueTask<User?> CreateAdministrationUserAsync(User user, CancellationToken cancellationToken = default)
+    public async ValueTask<User?> CreateUserAsync(User user, CancellationToken cancellationToken = default)
     {
         using HttpResponseMessage response = await this.httpClient.PostAsJsonAsync(
             $"{AdministrationUsersBasePath}/",
@@ -55,7 +55,7 @@ public partial class HttpClientBroker
         return await response.Content.ReadFromJsonAsync<User>(cancellationToken);
     }
 
-    public async ValueTask<User?> UpdateAdministrationUserAsync(string userId, User user, CancellationToken cancellationToken = default)
+    public async ValueTask<User?> UpdateUserAsync(string userId, User user, CancellationToken cancellationToken = default)
     {
         using HttpResponseMessage response = await this.httpClient.PutAsJsonAsync(
             $"{AdministrationUsersBasePath}/{userId}",
@@ -70,7 +70,7 @@ public partial class HttpClientBroker
         return await response.Content.ReadFromJsonAsync<User>(cancellationToken);
     }
 
-    public async ValueTask<bool> DeleteAdministrationUserAsync(string userId, CancellationToken cancellationToken = default)
+    public async ValueTask<bool> DeleteUserAsync(string userId, CancellationToken cancellationToken = default)
     {
         using HttpResponseMessage response = await this.httpClient.DeleteAsync(
             $"{AdministrationUsersBasePath}/{userId}",

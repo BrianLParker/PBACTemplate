@@ -9,18 +9,18 @@ namespace PBACTemplate.Client.Tests.Unit;
 public partial class UserServiceTests
 {
     [Fact]
-    public async Task ShouldCreateAdministrationUserAsync()
+    public async Task ShouldCreateUserAsync()
     {
         // Given
         User inputUser = CreateUser();
         User returnedUser = CreateUser(inputUser.Id);
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()))
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()))
             .ReturnsAsync(returnedUser);
 
         // When
-        User? actualUser = await this.userService.CreateAdministrationUserAsync(inputUser);
+        User? actualUser = await this.userService.CreateUserAsync(inputUser);
 
         // Then
         Assert.NotNull(actualUser);
@@ -29,14 +29,14 @@ public partial class UserServiceTests
         Assert.Equal(returnedUser.Email, actualUser.Email);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(inputUser, It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
-    public async Task ShouldUpdateAdministrationUserAsync()
+    public async Task ShouldUpdateUserAsync()
     {
         // Given
         string userId = GetRandomString();
@@ -44,11 +44,11 @@ public partial class UserServiceTests
         User updatedUser = CreateUser(userId);
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()))
             .ReturnsAsync(updatedUser);
 
         // When
-        User? actualUser = await this.userService.UpdateAdministrationUserAsync(userId, inputUser);
+        User? actualUser = await this.userService.UpdateUserAsync(userId, inputUser);
 
         // Then
         Assert.NotNull(actualUser);
@@ -57,48 +57,48 @@ public partial class UserServiceTests
         Assert.Equal(updatedUser.Email, actualUser.Email);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.UpdateAdministrationUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
+            broker.UpdateUserAsync(userId, inputUser, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
-    public async Task ShouldDeleteAdministrationUserAsync()
+    public async Task ShouldDeleteUserAsync()
     {
         // Given
         string userId = GetRandomString();
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()))
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(true);
 
         // When
-        bool result = await this.userService.DeleteAdministrationUserAsync(userId);
+        bool result = await this.userService.DeleteUserAsync(userId);
 
         // Then
         Assert.True(result);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.DeleteAdministrationUserAsync(userId, It.IsAny<CancellationToken>()),
+            broker.DeleteUserAsync(userId, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
-    public async Task ShouldGetAdministrationUserAsync()
+    public async Task ShouldGetUserAsync()
     {
         // Given
         string userId = GetRandomString();
         User returnedUser = CreateUser(userId);
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.GetAdministrationUserAsync(userId, It.IsAny<CancellationToken>()))
+            broker.GetUserAsync(userId, It.IsAny<CancellationToken>()))
             .ReturnsAsync(returnedUser);
 
         // When
-        User? actualUser = await this.userService.GetAdministrationUserAsync(userId);
+        User? actualUser = await this.userService.GetUserAsync(userId);
 
         // Then
         Assert.NotNull(actualUser);
@@ -107,30 +107,30 @@ public partial class UserServiceTests
         Assert.Equal(returnedUser.Email, actualUser.Email);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.GetAdministrationUserAsync(userId, It.IsAny<CancellationToken>()),
+            broker.GetUserAsync(userId, It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();
     }
 
     [Fact]
-    public async Task ShouldGetAdministrationUsersAsync()
+    public async Task ShouldGetUsersAsync()
     {
         // Given
         ImmutableList<User> users = ImmutableList.Create(CreateUser(), CreateUser());
 
         this.httpClientBrokerMock.Setup(broker =>
-            broker.GetAdministrationUsersAsync(It.IsAny<CancellationToken>()))
+            broker.GetUsersAsync(It.IsAny<CancellationToken>()))
             .ReturnsAsync(users);
 
         // When
-        ImmutableList<User> actualUsers = await this.userService.GetAdministrationUsersAsync();
+        ImmutableList<User> actualUsers = await this.userService.GetUsersAsync();
 
         // Then
         Assert.Equivalent(users, actualUsers, strict: true);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.GetAdministrationUsersAsync(It.IsAny<CancellationToken>()),
+            broker.GetUsersAsync(It.IsAny<CancellationToken>()),
             Times.Once);
 
         VerifyNoOtherBrokerCalls();

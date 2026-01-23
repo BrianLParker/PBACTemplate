@@ -15,7 +15,7 @@ public sealed partial class UserService(
     private readonly IHttpClientBroker httpClient = httpClient;
     private readonly ILogger<UserService> logger = logger;
 
-    public ValueTask<User?> CreateAdministrationUserAsync(
+    public ValueTask<User?> CreateUserAsync(
         User user,
         CancellationToken cancellationToken = default) =>
         TryCatch(async () =>
@@ -24,7 +24,7 @@ public sealed partial class UserService(
 
             LogCreatingUser(user.UserName);
 
-            var createdUser = await this.httpClient.CreateAdministrationUserAsync(user, cancellationToken);
+            var createdUser = await this.httpClient.CreateUserAsync(user, cancellationToken);
 
             if (createdUser is null)
             {
@@ -34,7 +34,7 @@ public sealed partial class UserService(
             return createdUser;
         });
 
-    public ValueTask<bool> DeleteAdministrationUserAsync(
+    public ValueTask<bool> DeleteUserAsync(
         string userId,
         CancellationToken cancellationToken = default) =>
         TryCatch(async () =>
@@ -43,7 +43,7 @@ public sealed partial class UserService(
 
             LogRemovingUser(userId);
 
-            bool deleted = await this.httpClient.DeleteAdministrationUserAsync(userId, cancellationToken);
+            bool deleted = await this.httpClient.DeleteUserAsync(userId, cancellationToken);
 
             if (!deleted)
             {
@@ -53,7 +53,7 @@ public sealed partial class UserService(
             return true;
         });
 
-    public ValueTask<User?> GetAdministrationUserAsync(
+    public ValueTask<User?> GetUserAsync(
         string userId,
         CancellationToken cancellationToken = default) =>
         TryCatch(async () =>
@@ -62,19 +62,19 @@ public sealed partial class UserService(
 
             LogRetrievingUserById(userId);
 
-            return await this.httpClient.GetAdministrationUserAsync(userId, cancellationToken);
+            return await this.httpClient.GetUserAsync(userId, cancellationToken);
         });
 
-    public ValueTask<ImmutableList<User>> GetAdministrationUsersAsync(
+    public ValueTask<ImmutableList<User>> GetUsersAsync(
         CancellationToken cancellationToken = default) =>
         TryCatch(async () =>
         {
             LogRetrievingUsers();
 
-            return await this.httpClient.GetAdministrationUsersAsync(cancellationToken);
+            return await this.httpClient.GetUsersAsync(cancellationToken);
         });
 
-    public ValueTask<User?> UpdateAdministrationUserAsync(
+    public ValueTask<User?> UpdateUserAsync(
         string userId,
         User user,
         CancellationToken cancellationToken = default) =>
@@ -85,7 +85,7 @@ public sealed partial class UserService(
 
             LogUpdatingUser(userId);
 
-            var updatedUser = await this.httpClient.UpdateAdministrationUserAsync(userId, user, cancellationToken);
+            var updatedUser = await this.httpClient.UpdateUserAsync(userId, user, cancellationToken);
 
             if (updatedUser is null)
             {

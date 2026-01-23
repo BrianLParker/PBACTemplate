@@ -17,7 +17,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.CreateAdministrationUserAsync(nullUser!);
+            await this.userService.CreateUserAsync(nullUser!);
 
         // Then
         NullUsersException actualException = await Assert.ThrowsAsync<NullUsersException>(action);
@@ -25,7 +25,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -45,7 +45,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.CreateAdministrationUserAsync(invalidUser);
+            await this.userService.CreateUserAsync(invalidUser);
 
         // Then
         InvalidUsersException actualException = await Assert.ThrowsAsync<InvalidUsersException>(action);
@@ -53,7 +53,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -73,7 +73,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.CreateAdministrationUserAsync(invalidUser);
+            await this.userService.CreateUserAsync(invalidUser);
 
         // Then
         InvalidUsersException actualException = await Assert.ThrowsAsync<InvalidUsersException>(action);
@@ -81,7 +81,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.CreateAdministrationUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
+            broker.CreateUserAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -100,7 +100,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.UpdateAdministrationUserAsync(invalidUserId!, inputUser);
+            await this.userService.UpdateUserAsync(invalidUserId!, inputUser);
 
         // Then
         InvalidUsersException actualException = await Assert.ThrowsAsync<InvalidUsersException>(action);
@@ -108,7 +108,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.UpdateAdministrationUserAsync(It.IsAny<string>(), It.IsAny<User>(), It.IsAny<CancellationToken>()),
+            broker.UpdateUserAsync(It.IsAny<string>(), It.IsAny<User>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -125,7 +125,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.UpdateAdministrationUserAsync(userId, nullUser!);
+            await this.userService.UpdateUserAsync(userId, nullUser!);
 
         // Then
         NullUsersException actualException = await Assert.ThrowsAsync<NullUsersException>(action);
@@ -133,7 +133,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.UpdateAdministrationUserAsync(It.IsAny<string>(), It.IsAny<User>(), It.IsAny<CancellationToken>()),
+            broker.UpdateUserAsync(It.IsAny<string>(), It.IsAny<User>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -150,7 +150,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.DeleteAdministrationUserAsync(invalidUserId!);
+            await this.userService.DeleteUserAsync(invalidUserId!);
 
         // Then
         InvalidUsersException actualException = await Assert.ThrowsAsync<InvalidUsersException>(action);
@@ -158,7 +158,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.DeleteAdministrationUserAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            broker.DeleteUserAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
@@ -175,7 +175,7 @@ public partial class UserServiceTests
 
         // When
         Func<Task> action = async () =>
-            await this.userService.GetAdministrationUserAsync(invalidUserId!);
+            await this.userService.GetUserAsync(invalidUserId!);
 
         // Then
         InvalidUsersException actualException = await Assert.ThrowsAsync<InvalidUsersException>(action);
@@ -183,7 +183,7 @@ public partial class UserServiceTests
         Assert.Equal(expectedException.Message, actualException.Message);
 
         this.httpClientBrokerMock.Verify(broker =>
-            broker.GetAdministrationUserAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
+            broker.GetUserAsync(It.IsAny<string>(), It.IsAny<CancellationToken>()),
             Times.Never);
 
         VerifyNoOtherBrokerCalls();
