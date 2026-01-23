@@ -45,6 +45,7 @@ namespace PBACTemplate
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapAdditionalIdentityEndpoints();
             app.MapAdministrationRoleNamesEndpoints();
+            app.MapAdministrationUsersEndpoints();
             app.Run();
         }
     }

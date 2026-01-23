@@ -21,6 +21,7 @@ using PBACTemplate.Services.Foundations.UserCrud;
 using PBACTemplate.Services.Foundations.UserName;
 using PBACTemplate.Services.Foundations.UserOptions;
 using PBACTemplate.Services.Foundations.UserRoles;
+using PBACTemplate.Services.Foundations.Users;
 
 namespace PBACTemplate.Extensions;
 
@@ -44,6 +45,7 @@ public static partial class ServiceCollectionExtensions
             services.AddScoped<ITokensService, TokensService>();
             services.AddScoped<ITwoFactorService, TwoFactorService>();
             services.AddScoped<IUserCrudService, UserCrudService>();
+            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserNameService, UserNameService>();
             services.AddScoped<IUserOptionsService, UserOptionsService>();
             services.AddScoped<ISignInService, SignInService>();
