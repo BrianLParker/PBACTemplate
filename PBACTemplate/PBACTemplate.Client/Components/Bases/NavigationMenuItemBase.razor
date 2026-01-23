@@ -1,0 +1,15 @@
+﻿@typeparam Icon where Icon : PBACTemplate.Client.Models.Bases.Icon, new()
+<FluentNavLink Href="@Href" Match="@Match" Icon="@(new Icon().ToFluentIcon())">
+    @ChildContent
+</FluentNavLink>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Href { get; set; }
+
+    [Parameter]
+    public NavLinkMatch Match { get; set; } = NavLinkMatch.Prefix;
+}

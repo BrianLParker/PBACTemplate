@@ -15,5 +15,8 @@ public static class Icons
         public class Delete : Icon<FluentIcons.Delete>;
         public class Save : Icon<FluentIcons.Save>;
         public class Dismiss : Icon<FluentIcons.Dismiss>;
+        public class Home : Icon<FluentIcons.Home>;
+
+        public class Counter : Icon<FluentIcons.Counter>;
     }
 }

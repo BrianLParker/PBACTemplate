@@ -1,0 +1,16 @@
+﻿@typeparam Icon where Icon : PBACTemplate.Client.Models.Bases.Icon, new()
+
+<NavigationMenuItemBase Href="@Href" Match="@Match" Icon="@Icon">
+    @ChildContent
+</NavigationMenuItemBase>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Href { get; set; }
+
+    [Parameter]
+    public NavLinkMatch Match { get; set; } = NavLinkMatch.Prefix;
+}
