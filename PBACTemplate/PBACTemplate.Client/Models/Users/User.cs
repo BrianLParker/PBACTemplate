@@ -1,14 +1,11 @@
 ﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // User.cs See LICENSE.txt in the root folder of the solution.
 
-using System;
-using System.Collections.Generic;
-
 namespace PBACTemplate.Client.Models.Users;
 
 public class User
 {
-    public Guid Id { get; set; }
+    public string Id { get; set; } = string.Empty;
 
     public string UserName { get; set; } = string.Empty;
 
@@ -24,7 +21,8 @@ public class User
 
     public bool PhoneNumberConfirmed { get; set; }
 
-    public bool IsActive { get; set; }
+
+    public DateTimeOffset? LockoutEnd { get; set; }
 
     public DateTimeOffset CreatedAt { get; set; }
 

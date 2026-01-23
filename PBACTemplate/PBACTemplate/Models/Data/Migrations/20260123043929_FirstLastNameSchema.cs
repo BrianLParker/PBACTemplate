@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
+// 20260123043929_FirstLastNameSchema.cs See LICENSE.txt in the root folder of the solution.
+
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
