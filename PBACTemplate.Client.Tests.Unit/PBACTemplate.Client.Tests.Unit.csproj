@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\PBACTemplate\PBACTemplate.Client\PBACTemplate.Client.csproj" />
+		<ProjectReference Include="..\PBACTemplate\PBACTemplate.Client\PBACTemplate.Client.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
