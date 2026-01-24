@@ -16,7 +16,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.GetAsync("/Api/Administration/RoleNames/");
+        HttpResponseMessage response = await client.GetAsync("/Api/Administration/Roles/");
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -31,7 +31,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.GetAsync("/Api/Administration/RoleNames/Missing");
+        HttpResponseMessage response = await client.GetAsync("/Api/Administration/Roles/Missing");
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.NotFound);
@@ -44,7 +44,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.PostAsJsonAsync("/Api/Administration/RoleNames/", new { Name = "" });
+        HttpResponseMessage response = await client.PostAsJsonAsync("/Api/Administration/Roles/", new { Name = "" });
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
@@ -57,7 +57,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.PostAsJsonAsync("/Api/Administration/RoleNames/", new { Name = "NewRole" });
+        HttpResponseMessage response = await client.PostAsJsonAsync("/Api/Administration/Roles/", new { Name = "NewRole" });
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.Created);
@@ -72,7 +72,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.PutAsJsonAsync("/Api/Administration/RoleNames/Old", new { Name = "New" });
+        HttpResponseMessage response = await client.PutAsJsonAsync("/Api/Administration/Roles/Old", new { Name = "New" });
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.OK);
@@ -85,7 +85,7 @@ public partial class ApiAdministrationRolesEndpointsTests
         HttpClient client = this.factory.CreateClient();
 
         // When
-        HttpResponseMessage response = await client.DeleteAsync("/Api/Administration/RoleNames/Gone");
+        HttpResponseMessage response = await client.DeleteAsync("/Api/Administration/Roles/Gone");
 
         // Then
         response.StatusCode.Should().Be(HttpStatusCode.NoContent);

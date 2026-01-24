@@ -3,6 +3,7 @@
 
 using PBACTemplate.Client.Brokers.HttpClients;
 using PBACTemplate.Client.Services.Foundations.Roles.Exceptions;
+using System.Collections.Immutable;
 
 namespace PBACTemplate.Client.Services.Foundations.Roles;
 
@@ -55,7 +56,7 @@ public sealed partial class RoleService(IHttpClientBroker httpClientBroker, ILog
             return await this.httpClientBroker.RetrieveRoleAsync(roleName);
         });
 
-    public ValueTask<IReadOnlyList<string>> RetrieveRolesAsync() =>
+    public ValueTask<ImmutableList<string>> RetrieveRolesAsync() =>
         TryCatch(async () =>
         {
             LogRetrievingRoles();

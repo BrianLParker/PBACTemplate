@@ -74,7 +74,8 @@ public partial class ApiAdministrationUsersEndpointsTests
             Email = "charlie@example.com",
             FirstName = "Charlie",
             LastName = "Chaplin",
-            Password = "P@ssword1"
+            Password = "P@ssword1",
+            EmailConfirmed = true
         });
 
         // Then

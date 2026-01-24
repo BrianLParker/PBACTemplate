@@ -13,7 +13,7 @@ internal static class AdministrationRolesEndpointsBuilder
     {
         ArgumentNullException.ThrowIfNull(endpoints);
 
-        RouteGroupBuilder roleNamesGroup = endpoints.MapGroup("/Api/Administration/RoleNames")
+        RouteGroupBuilder roleNamesGroup = endpoints.MapGroup("/Api/Administration/Roles")
             .RequireAuthorization();
 
         roleNamesGroup.AddEndpointFilter(new RolesExceptionsFilter());
@@ -47,7 +47,7 @@ internal static class AdministrationRolesEndpointsBuilder
                 }
 
                 string created = await rolesService.CreateRoleAsync(request.Name);
-                return TypedResults.Created($"/Api/Administration/RoleNames/{created}", created);
+                return TypedResults.Created($"/Api/Administration/Roles/{created}", created);
             });
 
         roleNamesGroup.MapPut(

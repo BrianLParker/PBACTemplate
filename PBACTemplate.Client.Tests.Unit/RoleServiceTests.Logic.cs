@@ -1,6 +1,8 @@
 ﻿// Copyright (c) 2026, Brian Parker. All Rights Reserved.
 // RoleServiceTests.Logic.cs See LICENSE.txt in the root folder of the solution.
 
+using System.Collections.Immutable;
+
 namespace PBACTemplate.Client.Tests.Unit;
 
 public partial class RoleServiceTests
@@ -78,7 +80,7 @@ public partial class RoleServiceTests
     public async Task ShouldRetrieveRolesAsync()
     {
         // Given
-        IReadOnlyList<string> roles = new List<string> { "Admin", "Manager" };
+        ImmutableList<string> roles = ["Admin", "Manager"];
 
         this.httpClientBrokerMock.Setup(broker =>
             broker.RetrieveRolesAsync())
